@@ -5,40 +5,49 @@
    ============================================================ */
 
 :root {
-  --bg-body: #FAF7F2;
+  --bg-body: #F7F5F0;           /* Soft warm cream / canvas */
   --bg-card: #FFFFFF;
   --bg-elevated: #FFFFFF;
-  --bg-subtle: #F3ECE2;
-  --bg-active: #E8DDCF;
+  --bg-subtle: #EFECE4;
+  --bg-active: #E4DFC6;
   
-  --text-main: #1C1917;
-  --text-muted: #666059;
-  --text-light: #9C9488;
+  --text-main: #2A1F18;          /* Deep roasted walnut tone */
+  --text-muted: #64564B;
+  --text-light: #948577;
   
-  --primary: #C3512F;           /* Warm Terracotta */
-  --primary-hover: #AB4222;
-  --primary-light: #FBF0EB;
+  --primary: #87A96B;           /* Fresh Sage Green */
+  --primary-hover: #729456;
+  --primary-light: #EEF4EA;
   
-  --agave: #284439;             /* Agave Olive Green */
-  --agave-light: #E9EFEA;
+  --walnut: #5A3E2B;            /* Deep Walnut Brown */
+  --walnut-hover: #483121;
+  --walnut-light: #F4EFEB;
   
-  --sand: #E6DDD0;
-  --border: #E8E1D5;
-  --border-focus: #C3512F;
+  --amber: #D5851F;             /* Golden Amber Glow Accent */
+  --amber-hover: #BE7214;
+  --amber-light: #FDF5E9;
   
-  --veg-color: #15803D;
-  --nonveg-color: #B91C1C;
+  --agave: #5A3E2B;             /* Using Walnut for primary action accents */
+  --agave-light: #EEF4EA;
   
-  --shadow-sm: 0 2px 8px rgba(28, 25, 23, 0.04);
-  --shadow-md: 0 8px 24px rgba(28, 25, 23, 0.08);
-  --shadow-lg: 0 16px 40px rgba(28, 25, 23, 0.12);
+  --sand: #E6DFD5;
+  --border: #DCD3C5;
+  --border-focus: #5A3E2B;
+  --border-brutal: 2px solid #5A3E2B;
+  
+  --veg-color: #2E7D32;
+  --nonveg-color: #C62828;
+  
+  --shadow-sm: 0 2px 0 rgba(90, 62, 43, 0.08);
+  --shadow-md: 3px 3px 0 #5A3E2B;
+  --shadow-lg: 5px 5px 0 #5A3E2B;
   
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
   
   --max-w: 1240px; /* Expansive desktop container */

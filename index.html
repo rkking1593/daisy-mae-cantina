@@ -3,276 +3,1351 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Daisy Mae Cantina · Digital Menu & Direct Order</title>
-  <meta name="description" content="View the official menu for Daisy Mae Cantina, Khan Market, New Delhi. Direct commission-free ordering via WhatsApp.">
-  <meta name="theme-color" content="#FAF7F2">
+  <title>Daisy Mae Cantina · Modern Mexican Kitchen & Tequila Lounge · Khan Market, New Delhi</title>
+  <meta name="description" content="Discover Daisy Mae Cantina in Khan Market, New Delhi. Authentic street birria tacos, loaded artisanal nachos, churros, agave sips & vibrant cantina vibes.">
+  <meta name="theme-color" content="#F7F5F0">
 
   <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:title" content="Daisy Mae Cantina · Khan Market, New Delhi">
-  <meta property="og:description" content="Mexican Cantina & Tequila Bar. View digital menu & order directly on WhatsApp.">
+  <meta property="og:description" content="Modern Mexican Kitchen & Agave Bar. Authentic birria tacos, artisanal nachos, and handcrafted sips.">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <!-- Google Fonts: Space Grotesk (Chunky Neo-Brutalist) & Plus Jakarta Sans & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Neo-Brutalist Landing Page Specialized Styles */
+    :root {
+      --font-display: 'Space Grotesk', -apple-system, sans-serif;
+    }
+
+    .landing-body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* Top Announcement Bar */
+    .top-marquee {
+      background: var(--walnut);
+      color: #FFFFFF;
+      padding: 9px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--text-main);
+    }
+
+    .top-marquee-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .top-marquee a {
+      color: var(--amber);
+      text-decoration: underline;
+    }
+
+    /* Main Navigation */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 245, 240, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 2.5px solid var(--walnut);
+      padding: 14px 20px;
+    }
+
+    .site-nav-container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-badge-square {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border: 2px solid var(--walnut);
+      box-shadow: 2.5px 2.5px 0 var(--walnut);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border-radius: 8px;
+    }
+
+    .brand-title-group h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-title-group span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-brutal-menu {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 10px 18px;
+      border: 2px solid var(--walnut);
+      border-radius: 10px;
+      box-shadow: 3px 3px 0 var(--walnut);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-brutal-menu:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--walnut);
+      background: var(--primary-hover);
+    }
+
+    .btn-brutal-menu:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--walnut);
+    }
+
+    .btn-brutal-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 9px 14px;
+      border: 2px solid var(--walnut);
+      border-radius: 10px;
+      box-shadow: 2px 2px 0 var(--walnut);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-brutal-ghost:hover {
+      background: var(--bg-subtle);
+    }
+
+    /* HERO SECTION - Neo-Brutalist Layout */
+    .hero-section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 36px 20px 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 56px;
+        padding-top: 24px;
+      }
+    }
+
+    .hero-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber-light);
+      border: 2px solid var(--walnut);
+      padding: 6px 14px;
+      border-radius: 999px;
+      box-shadow: 2px 2px 0 var(--walnut);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      margin-bottom: 20px;
+    }
+
+    .hero-tag-pill .pill-dot {
+      width: 8px;
+      height: 8px;
+      background: #15803D;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
+    }
+
+    .hero-big-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-big-heading .highlight-sage {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 0 8px;
+      display: inline-block;
+      border: 2px solid var(--walnut);
+      box-shadow: 3px 3px 0 var(--walnut);
+      transform: rotate(-1deg);
+    }
+
+    .hero-big-heading .highlight-amber {
+      color: var(--amber);
+      font-style: italic;
+      font-family: var(--font-serif);
+      text-transform: none;
+    }
+
+    .hero-lead-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      max-width: 580px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .btn-hero-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--walnut);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 26px;
+      border: 2px solid var(--walnut);
+      border-radius: 12px;
+      box-shadow: 4px 4px 0 var(--amber);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-hero-primary:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--amber);
+    }
+
+    .btn-hero-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      color: var(--walnut);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 22px;
+      border: 2px solid var(--walnut);
+      border-radius: 12px;
+      box-shadow: 4px 4px 0 var(--walnut);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      background: var(--bg-subtle);
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--walnut);
+    }
+
+    /* Hero Trust Metrics Strip */
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 2px dashed var(--border);
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 2px solid var(--walnut);
+      border-radius: 10px;
+      padding: 12px 10px;
+      box-shadow: 2px 2px 0 var(--walnut);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--walnut);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+
+    /* Hero Image Poster Card */
+    .hero-poster-frame {
+      position: relative;
+    }
+
+    .hero-poster-card {
+      background: #FFFFFF;
+      border: 3px solid var(--walnut);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 6px 6px 0 var(--walnut);
+      position: relative;
+    }
+
+    .hero-poster-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .poster-sticker-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--amber);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 2px solid var(--walnut);
+      border-radius: 6px;
+      box-shadow: 2.5px 2.5px 0 var(--walnut);
+      transform: rotate(2deg);
+    }
+
+    .poster-bottom-caption {
+      padding: 16px 20px;
+      background: #FFFFFF;
+      border-top: 2px solid var(--walnut);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .caption-dish {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .caption-price {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--walnut);
+    }
+
+    /* VALUE BANNER STRIP */
+    .ticker-strip {
+      background: var(--primary);
+      border-top: 2.5px solid var(--walnut);
+      border-bottom: 2.5px solid var(--walnut);
+      padding: 16px 20px;
+      margin: 40px 0;
+    }
+
+    .ticker-container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .ticker-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #FFFFFF;
+      border: 2px solid var(--walnut);
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 3px 3px 0 var(--walnut);
+    }
+
+    .ticker-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .ticker-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .ticker-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* SIGNATURE DISHES SHOWCASE */
+    .section-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section-header-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .section-header-block {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      background: var(--amber-light);
+      border: 1.5px solid var(--walnut);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .dishes-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .dish-showcase-card {
+      background: #FFFFFF;
+      border: 2.5px solid var(--walnut);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 4px 4px 0 var(--walnut);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+
+    .dish-showcase-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 6px 6px 0 var(--walnut);
+    }
+
+    .dish-card-img-wrap {
+      position: relative;
+      height: 230px;
+      border-bottom: 2px solid var(--walnut);
+      overflow: hidden;
+    }
+
+    .dish-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .dish-showcase-card:hover .dish-card-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .badge-card-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border: 1.5px solid var(--walnut);
+      border-radius: 6px;
+      box-shadow: 2px 2px 0 var(--walnut);
+      text-transform: uppercase;
+    }
+
+    .dish-card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .dish-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .dish-title {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .dish-desc {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .dish-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1.5px dashed var(--border);
+    }
+
+    .dish-price {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--walnut);
+    }
+
+    .btn-card-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-light);
+      color: var(--walnut);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 14px;
+      border: 1.5px solid var(--walnut);
+      border-radius: 8px;
+      box-shadow: 2px 2px 0 var(--walnut);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn-card-order:hover {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    /* STORY / ABOUT SECTION */
+    .story-section {
+      background: #FFFFFF;
+      border-top: 2.5px solid var(--walnut);
+      border-bottom: 2.5px solid var(--walnut);
+      padding: 60px 20px;
+      margin-top: 30px;
+    }
+
+    .story-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .story-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+      }
+    }
+
+    .story-frame {
+      position: relative;
+    }
+
+    .story-img-main {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border: 3px solid var(--walnut);
+      border-radius: 16px;
+      box-shadow: 6px 6px 0 var(--walnut);
+      display: block;
+    }
+
+    .story-stamp {
+      position: absolute;
+      bottom: -16px;
+      right: -12px;
+      background: var(--amber);
+      color: #FFFFFF;
+      border: 2px solid var(--walnut);
+      box-shadow: 3px 3px 0 var(--walnut);
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .story-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .story-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .story-points {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .story-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .point-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      border: 1.5px solid var(--walnut);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .point-text {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* AMBIANCE GALLERY GRID */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border: 2px solid var(--walnut);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0 var(--walnut);
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1.5px solid var(--walnut);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 1.5px 1.5px 0 var(--walnut);
+    }
+
+    /* LOCATION & VISIT CARD */
+    .visit-card-wrap {
+      max-width: var(--max-w);
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+
+    .visit-card {
+      background: var(--walnut-light);
+      border: 3px solid var(--walnut);
+      border-radius: 20px;
+      padding: 36px 24px;
+      box-shadow: 6px 6px 0 var(--walnut);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 860px) {
+      .visit-card {
+        grid-template-columns: 1.2fr 0.8fr;
+        padding: 48px;
+        align-items: center;
+      }
+    }
+
+    .visit-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .visit-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .detail-item-icon {
+      width: 36px;
+      height: 36px;
+      background: #FFFFFF;
+      border: 2px solid var(--walnut);
+      border-radius: 10px;
+      box-shadow: 2px 2px 0 var(--walnut);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .visit-cta-card {
+      background: #FFFFFF;
+      border: 2.5px solid var(--walnut);
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 4px 4px 0 var(--walnut);
+      text-align: center;
+    }
+
+    .visit-cta-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .visit-cta-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    .landing-footer {
+      background: var(--walnut);
+      color: #FFFFFF;
+      border-top: 3px solid var(--text-main);
+      padding: 48px 20px 32px;
+    }
+
+    .footer-container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .footer-top-row {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-bottom: 32px;
+      border-bottom: 1.5px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    @media (min-width: 768px) {
+      .footer-top-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: #D6CCC2;
+      margin-top: 4px;
+    }
+
+    .footer-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-nav-links a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .footer-nav-links a:hover {
+      background: var(--amber);
+      color: #FFFFFF;
+      border-color: var(--amber);
+    }
+
+    .footer-bottom-copy {
+      font-size: 0.8rem;
+      color: #A89F91;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
 </head>
-<body>
+<body class="landing-body">
 
-  <div class="app-wrapper">
+  <!-- Top Announcement Bar -->
+  <div class="top-marquee">
+    <div class="top-marquee-inner">
+      <span>📍 Khan Market, New Delhi · Shop No. 7 (2nd Floor)</span>
+      <span>•</span>
+      <span>⏰ Open Today 12:00 PM – 11:30 PM</span>
+      <span>•</span>
+      <span>✨ 100% Commission-Free Direct WhatsApp Orders</span>
+    </div>
+    <a href="menu.html" style="margin-left: 12px; white-space: nowrap; font-size: 0.75rem;">View Menu →</a>
+  </div>
 
-    <!-- Header & Hero Section -->
-    <header class="cantina-header">
-      <div class="brand-bar">
-        <span class="brand-tag" id="cafe-status-tag">
-          <span class="status-dot"></span>
-          Open Now · Closes 11:30 PM
-        </span>
-        <a href="https://instagram.com/daisymaecantina" target="_blank" rel="noopener" class="ig-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Main Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="index.html" class="brand-logo-wrap">
+        <div class="brand-badge-square">🌮</div>
+        <div class="brand-title-group">
+          <h2>Daisy Mae</h2>
+          <span>Cantina · Khan Market</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="https://instagram.com/daisymaecantina" target="_blank" rel="noopener" class="btn-brutal-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
-          @daisymaecantina
+          <span>Instagram</span>
+        </a>
+
+        <a href="menu.html" class="btn-brutal-menu">
+          <span>Digital Menu & Order</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </a>
       </div>
+    </div>
+  </nav>
 
-      <div class="hero-content">
-        <h1 class="hero-title">Daisy Mae</h1>
-        <div class="hero-subtitle">Modern Mexican Cantina</div>
-        <p class="hero-tagline">Authentic street birria tacos, artisanal nachos, and handcrafted sips in the heart of Khan Market.</p>
-        
-        <!-- Location and Quick Action Row -->
-        <div class="hero-actions-row">
-          <div class="location-pill">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
+  <!-- HERO SECTION -->
+  <header class="hero-section">
+    <div class="hero-grid">
+      <div class="hero-text-col">
+        <div class="hero-tag-pill" id="landing-live-status">
+          <span class="pill-dot"></span>
+          <span>Open Now · 12:00 PM – 11:30 PM IST</span>
+        </div>
+
+        <h1 class="hero-big-heading">
+          Where Mexico City meets <span class="highlight-sage">Khan Market</span> <span class="highlight-amber">passion.</span>
+        </h1>
+
+        <p class="hero-lead-text">
+          Crispy slow-braised Birria tacos with hot dipping consommé, towering plates of melted Oaxaca nachos, handmade churros, and artisanal agave coolers. Handcrafted fresh every afternoon.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="menu.html" class="btn-hero-primary">
+            <span>Explore Menu & Order</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
-            <span>Shop No. 7, 2nd Floor, Khan Market, New Delhi</span>
-          </div>
-
-          <!-- Quick Action Chips -->
-          <div class="quick-actions">
-            <a href="https://maps.google.com/?q=Daisy+Mae+Cantina+Khan+Market+New+Delhi" target="_blank" rel="noopener" class="action-chip">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-              </svg>
-              Directions
-            </a>
-            <a href="tel:+919999999999" class="action-chip">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              Call Cafe
-            </a>
-            <a href="https://wa.me/919999999999" target="_blank" class="action-chip highlight">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
-              </svg>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Commission Free Value Proposition Banner -->
-      <div class="commission-banner">
-        <span class="icon">✨</span>
-        <div class="text">
-          <strong>Order Direct & Save:</strong> 100% commission-free, freshly prepared & directly dispatched by our Khan Market kitchen.
-        </div>
-      </div>
-    </header>
-
-    <!-- Sticky Navigation & Search Bar -->
-    <div class="sticky-filter-wrapper">
-      <div class="filter-controls-bar">
-        <!-- Search Input -->
-        <div class="search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" id="search-input" class="search-input" placeholder="Search tacos, nachos, churros, sips..." autocomplete="off">
-        </div>
-
-        <!-- Veg / Non-Veg Diet Filter Bar -->
-        <div class="diet-bar">
-          <button class="diet-pill active" data-diet="all">
-            <span>All Items</span>
-          </button>
-          <button class="diet-pill" data-diet="veg">
-            <span class="indicator-dot veg"></span>
-            <span>Veg Only</span>
-          </button>
-          <button class="diet-pill" data-diet="nonveg">
-            <span class="indicator-dot nonveg"></span>
-            <span>Non-Veg</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Horizontal Category Tabs -->
-      <div class="category-tabs" id="category-tabs">
-        <!-- Rendered by JavaScript -->
-      </div>
-    </div>
-
-    <!-- Dynamic Menu Container -->
-    <main class="menu-container" id="menu-container">
-      <!-- Dishes dynamically populated by script.js -->
-    </main>
-
-    <!-- Khan Market Local SEO & Info Card -->
-    <footer class="cantina-footer">
-      <div class="footer-card">
-        <h3 class="footer-title">Visit Daisy Mae Cantina</h3>
-        <p class="footer-desc">Experience intimate Mexican dining, our hidden agave collection, and authentic Mexico City street flavours.</p>
-
-        <div class="footer-info-row">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <div><strong>Shop No. 7, 2nd Floor</strong>, Khan Market, Rabindra Nagar, New Delhi 110003</div>
-        </div>
-
-        <div class="footer-info-row">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
-          <div><strong>12:00 PM – 11:30 PM</strong> (Open every day)</div>
-        </div>
-
-        <div class="footer-btn-grid">
-          <a href="https://maps.google.com/?q=Daisy+Mae+Cantina+Khan+Market+New+Delhi" target="_blank" rel="noopener" class="footer-action-btn primary">
-            Open in Google Maps
           </a>
-          <a href="https://instagram.com/daisymaecantina" target="_blank" rel="noopener" class="footer-action-btn">
-            Instagram Feed
+          <a href="https://maps.google.com/?q=Daisy+Mae+Cantina+Khan+Market+New+Delhi" target="_blank" rel="noopener" class="btn-hero-secondary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
+            <span>Get Directions</span>
           </a>
         </div>
+
+        <!-- Real-time metrics -->
+        <div class="hero-stats-row">
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Authentic Masa</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Zomato Commission</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-label">Khan Market Love</div>
+          </div>
+        </div>
       </div>
 
-      <div class="footer-credits">
-        <p><strong>Daisy Mae Cantina</strong> · Official Digital Menu Prototype</p>
-        <p style="margin-top: 4px;">Direct WhatsApp ordering system enabled.</p>
-      </div>
-    </footer>
-
-    <!-- Sticky Floating Bottom Cart Bar -->
-    <div class="cart-floating-bar" id="cart-floating-bar">
-      <div class="cart-bar-left">
-        <span class="cart-bar-count" id="cart-bar-count">0 items</span>
-        <span class="cart-bar-total" id="cart-bar-total">₹0</span>
-      </div>
-      <div class="cart-bar-right">
-        <span>View Order</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
+      <!-- Hero Poster Image Card -->
+      <div class="hero-poster-frame">
+        <div class="hero-poster-card">
+          <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80" alt="Slow-Cooked Birria Street Tacos at Daisy Mae Cantina" class="hero-poster-img">
+          <div class="poster-sticker-tag">Bestseller 🔥</div>
+          <div class="poster-bottom-caption">
+            <div>
+              <div class="caption-dish">Slow-Cooked Birria Tacos (3 pcs)</div>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Crispy grilled tortilla + hot dipping consommé</div>
+            </div>
+            <div class="caption-price">₹490</div>
+          </div>
+        </div>
       </div>
     </div>
+  </header>
 
-    <!-- Slide-over Checkout Drawer Backdrop & Panel -->
-    <div class="drawer-backdrop" id="drawer-backdrop"></div>
-    <div class="drawer-panel" id="drawer-panel">
-      <div class="drawer-header">
+  <!-- VALUE PROPOSITION TICKER STRIP -->
+  <section class="ticker-strip">
+    <div class="ticker-container">
+      <div class="ticker-pill">
+        <div class="ticker-icon">🥑</div>
         <div>
-          <div class="drawer-drag-handle"></div>
-          <h2 class="drawer-title">Your Order</h2>
-        </div>
-        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close cart">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-      <div class="drawer-body">
-        <!-- Order Type Selector -->
-        <div class="order-type-tabs">
-          <button class="type-tab active" data-type="delivery">🛵 Delivery</button>
-          <button class="type-tab" data-type="pickup">🛍️ Takeaway</button>
-          <button class="type-tab" data-type="dinein">🍽️ Dine-in</button>
-        </div>
-
-        <!-- Customer Details Form -->
-        <div class="customer-form">
-          <div class="form-title">Order Details</div>
-          
-          <div class="form-group">
-            <label for="cust-name">Your Name *</label>
-            <input type="text" id="cust-name" class="form-input" placeholder="e.g. Rahul Sharma" required>
-          </div>
-
-          <div class="form-group">
-            <label for="cust-phone">Phone Number (Optional)</label>
-            <input type="tel" id="cust-phone" class="form-input" placeholder="e.g. 9876543210">
-          </div>
-
-          <div class="form-group" id="delivery-fields">
-            <label for="cust-address">Delivery Address *</label>
-            <textarea id="cust-address" class="form-input" placeholder="House/Flat number, Building, Street, Area (Delhi NCR)"></textarea>
-          </div>
-
-          <div class="form-group" id="dinein-fields" style="display: none;">
-            <label for="cust-table">Table Number *</label>
-            <input type="text" id="cust-table" class="form-input" placeholder="e.g. Table 4">
-          </div>
-
-          <div class="form-group">
-            <label for="cust-notes">Special Instructions</label>
-            <input type="text" id="cust-notes" class="form-input" placeholder="e.g. Less spicy, extra green salsa, cutlery needed">
-          </div>
-        </div>
-
-        <!-- Itemized Cart List -->
-        <div>
-          <div class="form-title" style="margin-bottom: 8px;">Order Summary</div>
-          <div class="drawer-items-list" id="drawer-items-list">
-            <!-- Populated dynamically -->
-          </div>
-        </div>
-
-        <!-- Bill Breakdown -->
-        <div class="bill-summary">
-          <div class="bill-row">
-            <span>Subtotal</span>
-            <span id="drawer-subtotal">₹0</span>
-          </div>
-          <div class="bill-row">
-            <span>Commission (Zomato/Swiggy)</span>
-            <span style="color: #15803D; font-weight: 600;">₹0 (Saved!)</span>
-          </div>
-          <div class="bill-row total">
-            <span>Total Payable</span>
-            <span id="drawer-total">₹0</span>
-          </div>
+          <div class="ticker-title">Fresh Everyday</div>
+          <div class="ticker-sub">Avocados & salsas mashed per order</div>
         </div>
       </div>
-
-      <div class="drawer-footer">
-        <button class="btn-whatsapp-order" id="btn-whatsapp-order">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
-          </svg>
-          <span>Order via WhatsApp</span>
-        </button>
+      <div class="ticker-pill">
+        <div class="ticker-icon">⚡</div>
+        <div>
+          <div class="ticker-title">Direct WhatsApp Order</div>
+          <div class="ticker-sub">No middlemen, straight to the kitchen</div>
+        </div>
+      </div>
+      <div class="ticker-pill">
+        <div class="ticker-icon">🧀</div>
+        <div>
+          <div class="ticker-title">Real Oaxaca Cheese</div>
+          <div class="ticker-sub">Gooey, stretchy, traditional stretch</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Toast Notification -->
-    <div class="toast-msg" id="toast-msg">Item added to order</div>
+  <!-- SIGNATURE DISHES SHOWCASE -->
+  <section class="section-wrap">
+    <div class="section-header-block">
+      <div>
+        <span class="section-kicker">Kitchen Specials</span>
+        <h2 class="section-title">The Cantina Signature Three</h2>
+      </div>
+      <a href="menu.html" class="btn-brutal-ghost" style="align-self: flex-start;">View Full 16-Dish Menu →</a>
+    </div>
 
-  </div>
+    <div class="dishes-grid">
+      <!-- Dish 1 -->
+      <article class="dish-showcase-card">
+        <div class="dish-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Slow-Cooked Birria Street Tacos">
+          <span class="badge-card-tag">Chef's Pick</span>
+        </div>
+        <div class="dish-card-content">
+          <div class="dish-meta-row">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; font-weight:700; color:var(--nonveg-color);">
+              <span style="width:8px; height:8px; border-radius:50%; background:var(--nonveg-color);"></span> Non-Veg
+            </span>
+            <span style="font-size:0.75rem; font-weight:700; color:var(--amber);">🌶️ Mild Spicy</span>
+          </div>
+          <h3 class="dish-title">Slow-Cooked Birria Street Tacos</h3>
+          <p class="dish-desc">Tender braised pulled meat, melted Oaxaca cheese, cilantro & onion in crispy grilled corn tortillas served with a rich dipping consommé cup.</p>
+          <div class="dish-card-footer">
+            <span class="dish-price">₹490</span>
+            <a href="menu.html#tacos" class="btn-card-order">
+              <span>Order Dish</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </article>
 
-  <script src="script.js"></script>
+      <!-- Dish 2 -->
+      <article class="dish-showcase-card">
+        <div class="dish-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=600&q=80" alt="Cantina Grande Loaded Nachos">
+          <span class="badge-card-tag" style="background:var(--walnut);">Crowd Favourite</span>
+        </div>
+        <div class="dish-card-content">
+          <div class="dish-meta-row">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; font-weight:700; color:var(--veg-color);">
+              <span style="width:8px; height:8px; border-radius:50%; background:var(--veg-color);"></span> Pure Veg
+            </span>
+            <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">🧀 Cheese Overload</span>
+          </div>
+          <h3 class="dish-title">Cantina Grande Loaded Nachos</h3>
+          <p class="dish-desc">Stone-ground hand-fried tortilla chips, double warm queso blanco drip, guacamole dollops, black beans, pico de gallo & house jalapeños.</p>
+          <div class="dish-card-footer">
+            <span class="dish-price">₹480</span>
+            <a href="menu.html#small-plates" class="btn-card-order">
+              <span>Order Dish</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dish 3 -->
+      <article class="dish-showcase-card">
+        <div class="dish-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1624300629298-e9de39c13be5?auto=format&fit=crop&w=600&q=80" alt="Cinnamon Sugar Churros">
+          <span class="badge-card-tag" style="background:var(--amber);">Sweet Finish</span>
+        </div>
+        <div class="dish-card-content">
+          <div class="dish-meta-row">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:0.75rem; font-weight:700; color:var(--veg-color);">
+              <span style="width:8px; height:8px; border-radius:50%; background:var(--veg-color);"></span> Pure Veg
+            </span>
+            <span style="font-size:0.75rem; font-weight:700; color:var(--amber);">🍫 Belgian Dip</span>
+          </div>
+          <h3 class="dish-title">Cinnamon Sugar Churros</h3>
+          <p class="dish-desc">Golden crisp fluted pastry fingers rolled in Mexican cinnamon sugar. Served with warm dulce de leche and dark Belgian chocolate fondue.</p>
+          <div class="dish-card-footer">
+            <span class="dish-price">₹340</span>
+            <a href="menu.html#desserts" class="btn-card-order">
+              <span>Order Dish</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- OUR STORY & ATMOSPHERE -->
+  <section class="story-section">
+    <div class="story-grid">
+      <div class="story-frame">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Daisy Mae Cantina Interior Ambiance" class="story-img-main">
+        <div class="story-stamp">
+          <div>KHAN MARKET</div>
+          <div style="font-size:0.7rem; font-weight:500;">2nd Floor Cantina</div>
+        </div>
+      </div>
+
+      <div class="story-content">
+        <span class="section-kicker">The Cantina Story</span>
+        <h2>Born from genuine love for Mexico City street food</h2>
+        <p class="story-text">
+          Tucked away on the 2nd floor of Khan Market, Daisy Mae is an intimate hideout dedicated to bold, unfiltered Mexican hospitality. No shortcuts, no pre-made sauces — just fresh herbs, stone-ground corn tortillas, slow-simmered birria pots, and cold artisanal agave sips.
+        </p>
+
+        <div class="story-points">
+          <div class="story-point-item">
+            <div class="point-icon">🔥</div>
+            <div class="point-text">Slow-braised meats simmered for over 6 hours in adobo chili broths.</div>
+          </div>
+          <div class="story-point-item">
+            <div class="point-icon">🌱</div>
+            <div class="point-text">Dedicated vegetarian & vegan cantina menu with fresh panko avocados & wild mushrooms.</div>
+          </div>
+          <div class="story-point-item">
+            <div class="point-icon">🍸</div>
+            <div class="point-text">Curated non-alcoholic agave coolers, hibiscus agua de jamaica, and smoky lemonades.</div>
+          </div>
+        </div>
+
+        <a href="menu.html" class="btn-brutal-menu">
+          <span>See Full Menu (16 Items)</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMBIANCE GALLERY (6 PHOTOS) -->
+  <section class="section-wrap">
+    <div class="section-header-block">
+      <div>
+        <span class="section-kicker">Atmosphere & Food</span>
+        <h2 class="section-title">The Cantina Gallery</h2>
+      </div>
+      <a href="https://instagram.com/daisymaecantina" target="_blank" rel="noopener" class="btn-brutal-ghost">@daisymaecantina on Instagram ↗</a>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80" alt="Crispy Avocado Tacos">
+        <span class="gallery-label">Baja Avocado Tacos</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=600&q=80" alt="Smoked Chipotle Chicken Taco">
+        <span class="gallery-label">Adobo Street Tacos</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?auto=format&fit=crop&w=600&q=80" alt="Smoked Quesadilla">
+        <span class="gallery-label">Oaxaca Quesadilla</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Agua de Jamaica Hibiscus Sip">
+        <span class="gallery-label">Hibiscus Jamaica Cooler</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Daisy Mae Dining Corner">
+        <span class="gallery-label">Cantina Corner</span>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&w=600&q=80" alt="Tres Leches Cake">
+        <span class="gallery-label">Classic Tres Leches</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT US & CONTACT CARD -->
+  <section class="visit-card-wrap">
+    <div class="visit-card">
+      <div>
+        <span class="section-kicker">Find Us</span>
+        <h2 class="visit-title">Come dine in Khan Market</h2>
+        <p style="color:var(--text-muted); line-height:1.6;">
+          Located above the bustling lanes of Khan Market. Drop by for a quiet lunch, an afternoon guacamole break, or late dinner with friends.
+        </p>
+
+        <div class="visit-details-list">
+          <div class="detail-item">
+            <div class="detail-item-icon">📍</div>
+            <div>
+              <strong>Shop No. 7, 2nd Floor</strong>, Khan Market, Rabindra Nagar, New Delhi 110003
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-item-icon">⏰</div>
+            <div>
+              <strong>12:00 PM – 11:30 PM</strong> (Open Monday to Sunday, every day)
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-item-icon">💬</div>
+            <div>
+              <strong>Direct WhatsApp Ordering:</strong> Delivery, Takeaway & Dine-in supported.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-cta-card">
+        <h3>Ready to Taste?</h3>
+        <p>Browse our complete digital menu and send your order straight to the kitchen over WhatsApp.</p>
+        <a href="menu.html" class="btn-hero-primary" style="width:100%; justify-content:center; margin-bottom:12px;">
+          <span>Open Digital Menu</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="https://maps.google.com/?q=Daisy+Mae+Cantina+Khan+Market+New+Delhi" target="_blank" rel="noopener" class="btn-brutal-ghost" style="width:100%; justify-content:center;">
+          Open in Google Maps ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="landing-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <h3>Daisy Mae Cantina</h3>
+          <p>Modern Mexican Kitchen & Agave Bar · Khan Market, New Delhi</p>
+        </div>
+        <div class="footer-nav-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Digital Menu</a>
+          <a href="https://instagram.com/daisymaecantina" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom-copy">
+        <p>© 2026 Daisy Mae Cantina. Shop No. 7, 2nd Floor, Khan Market, New Delhi 110003.</p>
+        <p style="margin-top:4px;">Built with zero third-party commission · Direct Kitchen WhatsApp Ordering Prototype.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Real-time IST Status Checker for Landing Page -->
+  <script>
+    function updateLandingStatus() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const istTime = new Date(utc + (3600000 * 5.5));
+      const hours = istTime.getHours();
+      const minutes = istTime.getMinutes();
+      const currentMinutes = (hours * 60) + minutes;
+
+      const openMinutes = 12 * 60;        // 12:00 PM IST
+      const closeMinutes = (23 * 60) + 30; // 11:30 PM IST
+
+      const pill = document.getElementById('landing-live-status');
+      if (!pill) return;
+
+      const isOpen = (currentMinutes >= openMinutes && currentMinutes < closeMinutes);
+      if (isOpen) {
+        pill.innerHTML = '<span class="pill-dot" style="background:#15803D;"></span><span>Open Now · Closes 11:30 PM IST</span>';
+      } else {
+        pill.innerHTML = '<span class="pill-dot" style="background:#B91C1C;"></span><span>Closed Now · Opens 12:00 PM IST</span>';
+      }
+    }
+    updateLandingStatus();
+    setInterval(updateLandingStatus, 60000);
+  </script>
 </body>
 </html>
