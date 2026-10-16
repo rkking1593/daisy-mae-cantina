@@ -158,18 +158,25 @@ body {
   margin-bottom: 16px;
 }
 
+.hero-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
 .location-pill {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 8px;
+  font-size: 12.5px;
   color: var(--text-muted);
   background: var(--bg-card);
-  padding: 6px 12px;
+  padding: 9px 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  margin-bottom: 12px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .location-pill svg {
@@ -177,33 +184,34 @@ body {
   flex-shrink: 0;
 }
 
-/* Quick Action Chips */
+/* Quick Action Chips: 3 columns on mobile */
 .quick-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: 4px;
-}
-
-.quick-actions::-webkit-scrollbar {
-  display: none;
+  width: 100%;
 }
 
 .action-chip {
-  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 7px 14px;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 8px 4px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   background: var(--bg-card);
   color: var(--text-main);
   text-decoration: none;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.action-chip svg {
+  flex-shrink: 0;
 }
 
 .action-chip:hover, .action-chip:active {
@@ -220,7 +228,7 @@ body {
 
 /* Commission-Free Notice Banner */
 .commission-banner {
-  margin-top: 16px;
+  margin-top: 14px;
   background: #FEF7ED;
   border: 1px dashed #FDBA74;
   border-radius: var(--radius-md);
@@ -297,26 +305,27 @@ body {
 
 /* Dietary Filter Pills */
 .diet-bar {
-  display: flex;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
   width: 100%;
 }
 
 .diet-pill {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 8px 10px;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 4px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   background: var(--bg-card);
   color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .diet-pill.active {
@@ -1124,7 +1133,15 @@ textarea.form-input {
   }
 
   .quick-actions {
+    display: flex;
+    width: auto;
     padding-bottom: 0;
+    gap: 8px;
+  }
+
+  .action-chip {
+    padding: 7px 14px;
+    font-size: 12px;
   }
 
   .commission-banner {
