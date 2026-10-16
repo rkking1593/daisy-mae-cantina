@@ -20,6 +20,16 @@ const MENU_DATA = [
     categoryName: 'Signature Tacos & Birria',
     items: [
       {
+        id: 'baja-crispy-tacos',
+        name: 'Baja Crispy Street Tacos (2 pcs)',
+        price: 490,
+        isVeg: false,
+        desc: 'Tempura-crisp tiger prawns or adobo fish, chunky house guacamole, shredded slaw & salsa verde on warm corn tortillas.',
+        bestseller: true,
+        spicy: false,
+        img: 'daisy_drinks_6.jpg'
+      },
+      {
         id: 'birria-tacos',
         name: 'Slow-Cooked Birria Street Tacos',
         price: 490,
@@ -48,16 +58,6 @@ const MENU_DATA = [
         bestseller: true,
         spicy: true,
         img: 'https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?auto=format&fit=crop&w=600&q=80'
-      },
-      {
-        id: 'wild-mushroom-taco',
-        name: 'Charred Wild Mushroom & Truffle Taco',
-        price: 440,
-        isVeg: true,
-        desc: 'Garlic-thyme wild portobello mushrooms, refried black bean puree, cotija cheese & hint of truffle oil.',
-        bestseller: false,
-        spicy: false,
-        img: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=600&q=80'
       }
     ]
   },
@@ -65,6 +65,36 @@ const MENU_DATA = [
     id: 'nachos',
     categoryName: 'Nachos & Small Plates',
     items: [
+      {
+        id: 'fiesta-loaded-nachos',
+        name: 'Cantina Fiesta Loaded Nachos Platter',
+        price: 480,
+        isVeg: false,
+        desc: 'Stoneground corn nachos loaded with adobo grilled chicken, melted Oaxaca cheese, refried black beans, sour cream, guacamole & fresh pico de gallo.',
+        bestseller: true,
+        spicy: true,
+        img: 'daisy_interior_2.jpg'
+      },
+      {
+        id: 'street-elote',
+        name: 'Charred Mexican Street Corn Ribs (Elote)',
+        price: 360,
+        isVeg: true,
+        desc: 'Spiral charred sweet corn ribs brushed with cilantro lime butter, cotija cheese crumbles, fresh herbs & house ancho chile dust.',
+        bestseller: true,
+        spicy: true,
+        img: 'daisy_bar_3.jpg'
+      },
+      {
+        id: 'cantina-fried-torta',
+        name: 'Crispy Fried Chicken Mexican Torta',
+        price: 460,
+        isVeg: false,
+        desc: 'Buttermilk fried crispy chicken thigh, avocado mash, chipotle mayo, pickled jalapeños on grilled brioche with spiced fries.',
+        bestseller: false,
+        spicy: true,
+        img: 'daisy_tacos_4.jpg'
+      },
       {
         id: 'tableside-guac',
         name: 'Tableside Fresh Guacamole & Chips',
@@ -74,42 +104,32 @@ const MENU_DATA = [
         bestseller: true,
         spicy: false,
         img: 'https://images.unsplash.com/photo-1541288097308-7b8e3f58c4c6?auto=format&fit=crop&w=600&q=80'
-      },
-      {
-        id: 'cantina-baked-nachos',
-        name: 'Loaded Cantina Baked Nachos',
-        price: 480,
-        isVeg: true,
-        desc: 'Stoneground tortilla chips baked with Monterrey Jack & Cheddar blend, black beans, jalapeños, pico de gallo & sour cream.',
-        bestseller: true,
-        spicy: true,
-        img: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=600&q=80'
-      },
-      {
-        id: 'street-elote',
-        name: 'Mexican Street Elote Corn Ribs',
-        price: 320,
-        isVeg: true,
-        desc: 'Charred sweet corn ribs brushed with chipotle mayo, tajín spice dust, aged cotija cheese & lime wedges.',
-        bestseller: false,
-        spicy: true,
-        img: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=600&q=80'
       }
     ]
   },
   {
     id: 'quesadillas',
-    categoryName: 'Quesadillas & Mains',
+    categoryName: 'Quesadillas & Platters',
     items: [
       {
-        id: 'four-cheese-quesadilla',
-        name: 'Three-Cheese & Charred Poblano Quesadilla',
-        price: 430,
-        isVeg: true,
-        desc: 'Flour tortilla toasted crisp with melted mozzarella, cheddar, jack cheese, caramelized onion and salsa cruda.',
-        bestseller: false,
+        id: 'chimichurri-skewer-platter',
+        name: 'Daisy Mae Chimichurri Skewer Platter',
+        price: 540,
+        isVeg: false,
+        desc: 'Fire-grilled skewered prawns & scallions drizzled with herb chimichurri, served over Mexican red rice, refried beans, charred corn & house salsa.',
+        bestseller: true,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1618040996337-56904b7850b9?auto=format&fit=crop&w=600&q=80'
+        img: 'daisy_food_7.jpg'
+      },
+      {
+        id: 'four-cheese-quesadilla',
+        name: 'Oaxaca Three-Cheese Quesadilla & Spanish Rice',
+        price: 460,
+        isVeg: true,
+        desc: 'Golden grilled flour tortilla stuffed with melted Oaxaca cheese, served with fragrant Spanish rice, guacamole, sour cream & salsa verde.',
+        bestseller: true,
+        spicy: false,
+        img: 'daisy_nachos_5.jpg'
       },
       {
         id: 'tinga-quesadilla',
@@ -117,19 +137,9 @@ const MENU_DATA = [
         price: 490,
         isVeg: false,
         desc: 'Slow-simmered smoky tomato chicken, roasted corn, scallions and double cheese blend with avocado dip.',
-        bestseller: true,
-        spicy: false,
-        img: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=600&q=80'
-      },
-      {
-        id: 'cantina-burrito-bowl',
-        name: 'Cantina Fiesta Burrito Bowl',
-        price: 470,
-        isVeg: true,
-        desc: 'Cilantro lime rice, seasoned black beans, fajita bell peppers, charred corn, house guacamole & crispy nachos.',
         bestseller: false,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=600&q=80'
+        img: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=600&q=80'
       }
     ]
   },
@@ -174,14 +184,14 @@ const MENU_DATA = [
     categoryName: 'Cantina Coolers & Sips',
     items: [
       {
-        id: 'spicy-mango-cooler',
-        name: 'Spicy Mango Jalapeño Cooler',
-        price: 260,
+        id: 'kiwi-basil-cooler',
+        name: 'Artisanal Kiwi Basil Agave Cooler',
+        price: 290,
         isVeg: true,
-        desc: 'Alphonso mango nectar, fresh muddled mint, jalapeño slice, pink salt, lime and crushed ice with a Tajín rim.',
+        desc: 'Muddled golden kiwi slices, sweet basil leaves, fresh Mexican lime juice, organic blue agave nectar and soda over crushed ice.',
         bestseller: true,
-        spicy: true,
-        img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80'
+        spicy: false,
+        img: 'daisy_interior_1.jpg'
       },
       {
         id: 'hibiscus-agua-fresca',
