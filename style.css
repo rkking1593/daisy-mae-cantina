@@ -1,18 +1,19 @@
 /* ============================================================
    Daisy Mae Cantina - Minimalist Digital Menu & Direct Ordering
-   khan Market, New Delhi
+   Khan Market, New Delhi
+   Fully Responsive (Desktop Wide + Mobile-First Experience)
    ============================================================ */
 
 :root {
-  --bg-body: #F9F6F0;
+  --bg-body: #FAF7F2;
   --bg-card: #FFFFFF;
   --bg-elevated: #FFFFFF;
-  --bg-subtle: #F2ECE1;
-  --bg-active: #EADFCF;
+  --bg-subtle: #F3ECE2;
+  --bg-active: #E8DDCF;
   
   --text-main: #1C1917;
-  --text-muted: #68625B;
-  --text-light: #9B948B;
+  --text-muted: #666059;
+  --text-light: #9C9488;
   
   --primary: #C3512F;           /* Warm Terracotta */
   --primary-hover: #AB4222;
@@ -40,7 +41,7 @@
   --radius-lg: 20px;
   --radius-full: 9999px;
   
-  --max-w: 640px; /* Mobile first, elegant app shell */
+  --max-w: 1240px; /* Expansive desktop container */
 }
 
 /* Reset & Base */
@@ -58,15 +59,17 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   padding-bottom: 120px;
+  overflow-x: hidden;
 }
 
+/* Full Width App Container */
 .app-wrapper {
+  width: 100%;
   max-width: var(--max-w);
   margin: 0 auto;
   min-height: 100vh;
   background-color: var(--bg-body);
   position: relative;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.03);
 }
 
 /* Header & Hero Section */
@@ -140,18 +143,18 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--primary);
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
 
 .hero-tagline {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.45;
   margin-bottom: 16px;
 }
 
@@ -165,7 +168,7 @@ body {
   padding: 6px 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   width: 100%;
 }
 
@@ -194,7 +197,7 @@ body {
   gap: 6px;
   font-size: 12px;
   font-weight: 600;
-  padding: 7px 12px;
+  padding: 7px 14px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   background: var(--bg-card);
@@ -215,9 +218,9 @@ body {
   border-color: var(--agave);
 }
 
-/* Direct Order Commission-Free Badge */
+/* Commission-Free Notice Banner */
 .commission-banner {
-  margin: 16px 20px 0;
+  margin-top: 16px;
   background: #FEF7ED;
   border: 1px dashed #FDBA74;
   border-radius: var(--radius-md);
@@ -232,7 +235,7 @@ body {
 }
 
 .commission-banner .text {
-  font-size: 12px;
+  font-size: 12.5px;
   color: #9A3412;
   font-weight: 500;
   line-height: 1.35;
@@ -242,21 +245,28 @@ body {
   color: #7C2D12;
 }
 
-/* Search & Filter Sticky Bar */
+/* Sticky Navigation & Search Bar */
 .sticky-filter-wrapper {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(249, 246, 240, 0.95);
+  background: rgba(250, 247, 242, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 14px 20px 10px;
   border-bottom: 1px solid var(--border);
 }
 
+.filter-controls-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
 .search-box {
   position: relative;
-  margin-bottom: 10px;
+  width: 100%;
 }
 
 .search-icon {
@@ -285,11 +295,11 @@ body {
   border-color: var(--primary);
 }
 
-/* Dietary Toggle Pills */
+/* Dietary Filter Pills */
 .diet-bar {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  width: 100%;
 }
 
 .diet-pill {
@@ -300,7 +310,7 @@ body {
   gap: 6px;
   font-size: 12px;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 8px 10px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   background: var(--bg-card);
@@ -329,7 +339,7 @@ body {
   background-color: var(--nonveg-color);
 }
 
-/* Category Horizontal Tabs */
+/* Horizontal Category Tabs */
 .category-tabs {
   display: flex;
   gap: 8px;
@@ -344,9 +354,9 @@ body {
 
 .cat-btn {
   flex-shrink: 0;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 7px 14px;
+  padding: 7px 16px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   background: var(--bg-card);
@@ -362,17 +372,17 @@ body {
   border-color: var(--primary);
 }
 
-/* Menu Section */
+/* Menu Container */
 .menu-container {
-  padding: 16px 20px;
+  padding: 20px;
 }
 
 .category-group {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .category-header {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -380,15 +390,22 @@ body {
 
 .category-heading {
   font-family: var(--font-serif);
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-main);
 }
 
 .category-count {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--text-light);
   font-weight: 600;
+}
+
+/* Category Dishes: 1-col on mobile, 2-col on desktop */
+.category-dishes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 /* Dish Card */
@@ -397,7 +414,6 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 16px;
-  margin-bottom: 12px;
   display: flex;
   gap: 14px;
   box-shadow: var(--shadow-sm);
@@ -406,8 +422,9 @@ body {
   overflow: hidden;
 }
 
-.dish-card:active {
-  transform: scale(0.99);
+.dish-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #E0D7C9;
 }
 
 .dish-info {
@@ -463,7 +480,7 @@ body {
   background: #FFF7ED;
   color: #C2410C;
   border: 1px solid #FFEDD5;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: var(--radius-sm);
 }
 
@@ -472,12 +489,12 @@ body {
   font-weight: 600;
   color: #DC2626;
   background: #FEF2F2;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: var(--radius-sm);
 }
 
 .dish-name {
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 4px;
@@ -485,7 +502,7 @@ body {
 }
 
 .dish-price {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 6px;
@@ -494,13 +511,13 @@ body {
 .dish-desc {
   font-size: 12.5px;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.45;
   margin-top: auto;
 }
 
-/* Card Image & Add Button */
+/* Card Image & Add Stepper */
 .dish-action-col {
-  width: 105px;
+  width: 110px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -509,8 +526,8 @@ body {
 }
 
 .dish-img-box {
-  width: 105px;
-  height: 90px;
+  width: 110px;
+  height: 95px;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--bg-subtle);
@@ -525,10 +542,9 @@ body {
 }
 
 .dish-card:hover .dish-img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
-/* Button & Stepper */
 .btn-add-container {
   margin-top: -16px;
   position: relative;
@@ -598,7 +614,7 @@ body {
 /* Empty State */
 .empty-menu {
   text-align: center;
-  padding: 48px 20px;
+  padding: 60px 20px;
   color: var(--text-muted);
 }
 
@@ -607,14 +623,14 @@ body {
   color: var(--text-light);
 }
 
-/* Floating Bottom Bar (Sticky Mobile Cart) */
+/* Floating Bottom Cart Bar */
 .cart-floating-bar {
   position: fixed;
-  bottom: 18px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(120px);
   width: calc(100% - 32px);
-  max-width: calc(var(--max-w) - 32px);
+  max-width: 480px;
   background: var(--agave);
   color: #FFFFFF;
   border-radius: var(--radius-lg);
@@ -622,7 +638,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 12px 30px rgba(40, 68, 57, 0.35);
+  box-shadow: 0 14px 34px rgba(40, 68, 57, 0.4);
   z-index: 99;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
@@ -647,7 +663,6 @@ body {
 .cart-bar-total {
   font-size: 17px;
   font-weight: 700;
-  letter-spacing: -0.01em;
 }
 
 .cart-bar-right {
@@ -685,7 +700,7 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(100%);
   width: 100%;
-  max-width: var(--max-w);
+  max-width: 520px;
   max-height: 90vh;
   background: var(--bg-card);
   border-top-left-radius: 24px;
@@ -993,7 +1008,7 @@ textarea.form-input {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Footer & Khan Market SEO Card */
+/* Footer & Local SEO */
 .cantina-footer {
   padding: 32px 20px 24px;
   background: var(--bg-card);
@@ -1004,7 +1019,7 @@ textarea.form-input {
 .footer-card {
   background: var(--bg-subtle);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 22px;
   margin-bottom: 20px;
 }
 
@@ -1074,4 +1089,120 @@ textarea.form-input {
 
 .footer-credits strong {
   color: var(--text-muted);
+}
+
+/* ============================================================
+   RESPONSIVE DESKTOP ENHANCEMENTS (>= 768px)
+   Expands gracefully to full screen with 2-column cards
+   ============================================================ */
+@media (min-width: 768px) {
+  .cantina-header {
+    padding: 32px 36px 24px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .hero-tagline {
+    font-size: 15px;
+    max-width: 760px;
+  }
+
+  /* Inline location and actions */
+  .hero-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .location-pill {
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .quick-actions {
+    padding-bottom: 0;
+  }
+
+  .commission-banner {
+    max-width: 800px;
+  }
+
+  /* Desktop Filter Controls: Search and Diet Side-by-Side */
+  .sticky-filter-wrapper {
+    padding: 16px 36px 12px;
+  }
+
+  .filter-controls-bar {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .filter-controls-bar .search-box {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .filter-controls-bar .diet-bar {
+    width: 360px;
+    margin-bottom: 0;
+  }
+
+  /* Dishes in 2 Columns on Desktop */
+  .menu-container {
+    padding: 24px 36px;
+  }
+
+  .category-group {
+    margin-bottom: 42px;
+  }
+
+  .category-dishes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .dish-card {
+    height: 100%;
+  }
+
+  .cantina-footer {
+    padding: 40px 36px;
+  }
+
+  .footer-card {
+    max-width: 820px;
+  }
+
+  /* Slide-Over Right Side Drawer on Desktop */
+  .drawer-panel {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    width: 480px;
+    max-width: 480px;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 24px 0 0 24px;
+    transform: translateX(100%);
+  }
+
+  .drawer-panel.open {
+    transform: translateX(0);
+  }
+
+  .drawer-drag-handle {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .category-dishes {
+    gap: 20px;
+  }
 }
