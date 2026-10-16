@@ -442,20 +442,20 @@ body {
 /* Dish Card */
 .dish-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border: 2px solid var(--walnut);
+  border-radius: var(--radius-md);
   padding: 16px;
   display: flex;
   gap: 14px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 3px 3px 0 var(--walnut);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   position: relative;
   overflow: hidden;
 }
 
 .dish-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: #E0D7C9;
+  transform: translate(-1px, -1px);
+  box-shadow: 4.5px 4.5px 0 var(--walnut);
 }
 
 .dish-info {
@@ -562,6 +562,7 @@ body {
   border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--bg-subtle);
+  border: 2px solid var(--walnut);
   position: relative;
 }
 
@@ -585,16 +586,16 @@ body {
 
 .btn-add {
   width: 100%;
-  background: var(--bg-card);
-  color: var(--primary);
-  border: 1.5px solid var(--primary);
+  background: #FFFFFF;
+  color: var(--walnut);
+  border: 2px solid var(--walnut);
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 800;
   padding: 6px 10px;
-  border-radius: var(--radius-md);
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
+  box-shadow: 2px 2px 0 var(--walnut);
+  transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -604,6 +605,8 @@ body {
 .btn-add:hover, .btn-add:active {
   background: var(--primary);
   color: #FFFFFF;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--walnut);
 }
 
 .stepper {
@@ -611,11 +614,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--primary);
+  background: var(--walnut);
   color: #FFFFFF;
-  border-radius: var(--radius-md);
+  border: 2px solid var(--walnut);
+  border-radius: 8px;
   padding: 4px 6px;
-  box-shadow: 0 4px 12px rgba(195, 81, 47, 0.3);
+  box-shadow: 2px 2px 0 rgba(90, 62, 43, 0.4);
 }
 
 .stepper-btn {
@@ -639,7 +643,7 @@ body {
 
 .stepper-qty {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* Empty State */
@@ -662,14 +666,15 @@ body {
   transform: translateX(-50%) translateY(120px);
   width: calc(100% - 32px);
   max-width: 480px;
-  background: var(--agave);
+  background: var(--walnut);
   color: #FFFFFF;
-  border-radius: var(--radius-lg);
-  padding: 12px 18px;
+  border: 2.5px solid var(--text-main);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 14px 34px rgba(40, 68, 57, 0.4);
+  box-shadow: 4px 4px 0 var(--amber);
   z-index: 99;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
