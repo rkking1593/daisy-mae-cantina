@@ -6,10 +6,10 @@
 // Configuration (Placeholder WhatsApp as requested)
 const CONFIG = {
   cafeName: 'Daisy Mae Cantina',
-  whatsappNumber: '919999999999', // 91 + 9999999999
+  whatsappNumber: '919889225517', // 91 + 9999999999
   location: 'Shop No. 7, 2nd Floor, Khan Market, New Delhi',
   instagram: 'https://instagram.com/daisymaecantina',
-  phoneCall: '+919999999999',
+  phoneCall: '+919889225517',
   currency: '₹'
 };
 
