@@ -178,18 +178,26 @@ body {
 }
 
 /* ============================================================
-   Dining Area Slideshow (Khan Market Interior Showcase)
+   HERO SHOWCASE SPLIT LAYOUT:
+   Proportionate Dining Slideshow + Address & Actions Beside It
    ============================================================ */
+.hero-showcase-split {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0 20px;
+}
+
+/* Slideshow Container Wrapper */
 .dining-slideshow-wrap {
   width: 100%;
-  margin: 14px 0 18px 0;
 }
 
 .dining-slideshow {
   position: relative;
   width: 100%;
-  height: 230px;
-  background-color: var(--walnut);
+  height: 270px;
+  background-color: #1A120D; /* Deep matte roasted walnut background */
   border: 2px solid var(--walnut);
   border-radius: var(--radius-lg);
   box-shadow: 3.5px 3.5px 0 var(--walnut);
@@ -210,10 +218,15 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transform: scale(1.02);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(0.98);
+  transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #2C1F16 0%, #160F0B 100%);
+  overflow: hidden;
 }
 
 .slideshow-slide.active {
@@ -223,27 +236,17 @@ body {
   z-index: 2;
 }
 
+/* Contain image so NO part is cut or cropped; clean blank spaces on sides */
 .slideshow-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   object-position: center;
   display: block;
-}
-
-/* Subtle dark gradient overlay at top & bottom for legibility */
-.slideshow-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.05) 30%,
-    rgba(0, 0, 0, 0.1) 60%,
-    rgba(0, 0, 0, 0.75) 100%
-  );
-  pointer-events: none;
+  margin: auto;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
 }
 
 .slide-caption {
@@ -251,7 +254,7 @@ body {
   bottom: 12px;
   left: 12px;
   max-width: calc(100% - 130px);
-  background: rgba(42, 31, 24, 0.85);
+  background: rgba(32, 22, 16, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 5px 10px;
@@ -260,9 +263,9 @@ body {
   color: #FFFFFF;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   flex-wrap: wrap;
-  z-index: 3;
+  z-index: 4;
   pointer-events: none;
 }
 
@@ -290,8 +293,8 @@ body {
 .slideshow-top-bar {
   position: absolute;
   top: 10px;
-  left: 12px;
-  right: 12px;
+  left: 10px;
+  right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -303,7 +306,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(42, 31, 24, 0.82);
+  background: rgba(32, 22, 16, 0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #FFFFFF;
@@ -312,7 +315,7 @@ body {
   padding: 4px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .slideshow-pill-live svg {
@@ -320,7 +323,7 @@ body {
 }
 
 .slideshow-counter {
-  background: rgba(42, 31, 24, 0.85);
+  background: rgba(32, 22, 16, 0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: #FAF7F2;
@@ -378,7 +381,7 @@ body {
   align-items: center;
   gap: 5px;
   z-index: 5;
-  background: rgba(42, 31, 24, 0.65);
+  background: rgba(32, 22, 16, 0.75);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   padding: 5px 8px;
@@ -403,111 +406,223 @@ body {
   box-shadow: 0 0 6px rgba(213, 133, 31, 0.8);
 }
 
-@media (min-width: 768px) {
-  .dining-slideshow-wrap {
-    margin: 16px 0 20px 0;
-  }
-  .dining-slideshow {
-    height: 330px;
-    border-radius: 18px;
-    box-shadow: 4.5px 4.5px 0 var(--walnut);
-  }
-  .slide-caption {
-    bottom: 16px;
-    left: 16px;
-    padding: 7px 14px;
-    max-width: calc(100% - 150px);
-  }
-  .slide-caption-tag {
-    font-size: 11px;
-    padding: 3px 8px;
-  }
-  .slide-caption-text {
-    font-size: 13.5px;
-  }
-  .slide-btn {
-    width: 40px;
-    height: 40px;
-  }
-  .slide-btn.prev {
-    left: 16px;
-  }
-  .slide-btn.next {
-    right: 16px;
-  }
-  .slideshow-dots {
-    bottom: 16px;
-    right: 16px;
-    padding: 6px 10px;
-  }
+/* ============================================================
+   RIGHT COLUMN: Location & Action Buttons (Beside the Slideshow)
+   ============================================================ */
+.hero-actions-col {
+  width: 100%;
 }
 
-.hero-actions-row {
+.cantina-location-card {
+  background: #FFFFFF;
+  border: 2px solid var(--walnut);
+  border-radius: var(--radius-lg);
+  box-shadow: 3.5px 3.5px 0 var(--walnut);
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.location-pill {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
-  color: var(--text-muted);
-  background: var(--bg-card);
-  padding: 9px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  width: 100%;
+  justify-content: space-between;
+  gap: 14px;
+  height: 100%;
   box-sizing: border-box;
 }
 
-.location-pill svg {
+.loc-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #15803D;
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  align-self: flex-start;
+}
+
+.loc-badge svg {
+  color: #16A34A;
+}
+
+.loc-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.loc-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
+
+.location-address-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.loc-pin-icon {
   color: var(--primary);
+  margin-top: 2px;
   flex-shrink: 0;
 }
 
-/* Quick Action Chips: 3 columns on mobile */
-.quick-actions {
+.loc-main-text {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--walnut);
+  line-height: 1.25;
+}
+
+.loc-sub-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* The 3 Action Buttons Grid */
+.quick-actions-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   width: 100%;
 }
 
-.action-chip {
+.action-chip-card {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  font-size: 11.5px;
+  gap: 6px;
+  font-size: 12.5px;
   font-weight: 700;
-  padding: 8px 4px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-main);
+  padding: 9px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--walnut);
+  box-shadow: 2px 2px 0 var(--walnut);
+  background: #FFFFFF;
+  color: var(--walnut);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
   box-sizing: border-box;
 }
 
-.action-chip svg {
-  flex-shrink: 0;
+.action-chip-card:hover {
+  background-color: var(--walnut-light);
+  box-shadow: 1px 1px 0 var(--walnut);
+  transform: translate(1px, 1px);
 }
 
-.action-chip:hover, .action-chip:active {
-  background: var(--primary-light);
-  border-color: var(--primary);
-  color: var(--primary);
+.action-chip-card:active {
+  box-shadow: 0 0 0 var(--walnut);
+  transform: translate(2px, 2px);
 }
 
-.action-chip.highlight {
-  background: var(--agave);
+.action-chip-card.highlight {
+  background: var(--walnut);
   color: #FFFFFF;
-  border-color: var(--agave);
+  border-color: var(--walnut);
+}
+
+.action-chip-card.highlight:hover {
+  background: var(--walnut-hover);
+}
+
+.loc-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.loc-tag-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.loc-tag-icon {
+  font-size: 13px;
+}
+
+/* ============================================================
+   RESPONSIVE DESKTOP LAYOUT (>= 768px)
+   ============================================================ */
+@media (min-width: 768px) {
+  .hero-showcase-split {
+    display: grid;
+    grid-template-columns: minmax(360px, 490px) 1fr;
+    gap: 22px;
+    align-items: stretch;
+    margin: 18px 0 22px;
+  }
+
+  .dining-slideshow {
+    height: 310px;
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 var(--walnut);
+  }
+
+  .cantina-location-card {
+    border-radius: 16px;
+    box-shadow: 4px 4px 0 var(--walnut);
+    padding: 22px 24px;
+  }
+
+  .slide-caption {
+    bottom: 14px;
+    left: 14px;
+    padding: 6px 12px;
+    max-width: calc(100% - 140px);
+  }
+
+  .slide-caption-tag {
+    font-size: 10.5px;
+  }
+
+  .slide-caption-text {
+    font-size: 13px;
+  }
+
+  .slide-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .slide-btn.prev {
+    left: 14px;
+  }
+
+  .slide-btn.next {
+    right: 14px;
+  }
+
+  .slideshow-dots {
+    bottom: 14px;
+    right: 14px;
+    padding: 6px 10px;
+  }
+
+  .action-chip-card {
+    padding: 11px 10px;
+    font-size: 13px;
+  }
 }
 
 /* Commission-Free Notice Banner */
@@ -1410,34 +1525,8 @@ textarea.form-input {
     max-width: 760px;
   }
 
-  /* Inline location and actions */
-  .hero-actions-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-
-  .location-pill {
-    width: auto;
-    margin-bottom: 0;
-  }
-
-  .quick-actions {
-    display: flex;
-    width: auto;
-    padding-bottom: 0;
-    gap: 8px;
-  }
-
-  .action-chip {
-    padding: 7px 14px;
-    font-size: 12px;
-  }
-
   .commission-banner {
-    max-width: 800px;
+    max-width: 100%;
   }
 
   /* Desktop Filter Controls: Search and Diet Side-by-Side */
