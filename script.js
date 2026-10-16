@@ -621,9 +621,43 @@ dietPills.forEach(pill => {
   });
 });
 
+// Dynamic Operating Status based on Indian Standard Time (12:00 PM - 11:30 PM)
+function updateCafeStatus() {
+  const statusTag = document.getElementById('cafe-status-tag');
+  if (!statusTag) return;
+
+  // Calculate current IST (UTC+5:30)
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const istDate = new Date(utc + (3600000 * 5.5));
+
+  const hours = istDate.getHours();
+  const minutes = istDate.getMinutes();
+  const totalMinutes = hours * 60 + minutes;
+
+  const openTime = 12 * 60;       // 12:00 PM = 720 mins
+  const closeTime = 23 * 60 + 30; // 11:30 PM = 1410 mins
+
+  if (totalMinutes >= openTime && totalMinutes < closeTime) {
+    statusTag.className = 'brand-tag';
+    statusTag.innerHTML = `
+      <span class="status-dot"></span>
+      Open Now · Closes 11:30 PM
+    `;
+  } else {
+    statusTag.className = 'brand-tag closed';
+    statusTag.innerHTML = `
+      <span class="status-dot closed"></span>
+      Closed Now · Opens 12:00 PM
+    `;
+  }
+}
+
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
   renderCategoryTabs();
   renderMenu();
   updateCartState();
+  updateCafeStatus();
+  setInterval(updateCafeStatus, 60000); // Check every minute
 });

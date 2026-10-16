@@ -108,6 +108,16 @@ body {
   box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
 }
 
+.brand-tag.closed {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+.brand-tag.closed .status-dot {
+  background-color: #EF4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+}
+
 .ig-link {
   display: inline-flex;
   align-items: center;
