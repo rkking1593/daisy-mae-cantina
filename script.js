@@ -209,10 +209,12 @@ const MENU_DATA = [
 
 // App State
 let cart = {}; // { itemId: { item, qty } }
-let activeCategory = 'all';
+let activeCategory = MENU_DATA[0].id;
 let activeDiet = 'all'; // 'all', 'veg', 'nonveg'
 let searchQuery = '';
 let orderType = 'delivery'; // 'delivery', 'pickup', 'dinein'
+let isUserClickingTab = false;
+let spyObserver = null;
 
 // DOM Elements
 const menuContainer = document.getElementById('menu-container');
@@ -245,9 +247,9 @@ function showToast(msg) {
   setTimeout(() => toastEl.classList.remove('show'), 2200);
 }
 
-// Render Category Navigation Tabs
+// Render Category Navigation Tabs (Real food categories only, Swiggy/Zomato style)
 function renderCategoryTabs() {
-  const categories = [{ id: 'all', name: '✨ All Dishes' }, ...MENU_DATA.map(c => ({ id: c.id, name: c.categoryName }))];
+  const categories = MENU_DATA.map(c => ({ id: c.id, name: c.categoryName }));
   categoryTabs.innerHTML = categories.map(cat => `
     <button class="cat-btn ${activeCategory === cat.id ? 'active' : ''}" data-cat="${cat.id}">
       ${cat.name}
@@ -256,16 +258,31 @@ function renderCategoryTabs() {
 
   categoryTabs.querySelectorAll('.cat-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      activeCategory = btn.dataset.cat;
-      renderCategoryTabs();
-      renderMenu();
-      if (activeCategory !== 'all') {
-        const targetSection = document.getElementById(`section-${activeCategory}`);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+      const catId = btn.dataset.cat;
+      isUserClickingTab = true;
+      setActiveCategoryTab(catId);
+
+      const targetSection = document.getElementById(`section-${catId}`);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+
+      setTimeout(() => {
+        isUserClickingTab = false;
+      }, 800);
     });
+  });
+}
+
+function setActiveCategoryTab(catId) {
+  activeCategory = catId;
+  const buttons = categoryTabs.querySelectorAll('.cat-btn');
+  buttons.forEach(btn => {
+    const isCurrent = btn.dataset.cat === catId;
+    btn.classList.toggle('active', isCurrent);
+    if (isCurrent) {
+      btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   });
 }
 
@@ -317,15 +334,13 @@ function controlHtml(itemId, qty) {
   `;
 }
 
-// Render Menu based on Filter, Diet & Search
+// Render Menu with All Categories (Swiggy/Zomato style continuous scroll)
 function renderMenu() {
   let html = '';
   let matchCount = 0;
 
   MENU_DATA.forEach(group => {
-    if (activeCategory !== 'all' && activeCategory !== group.id) return;
-
-    // Filter items
+    // Filter items based on Diet & Search
     const filteredItems = group.items.filter(item => {
       // Diet check
       if (activeDiet === 'veg' && !item.isVeg) return false;
@@ -370,6 +385,36 @@ function renderMenu() {
   }
 
   menuContainer.innerHTML = html;
+  setupScrollSpy();
+}
+
+// Swiggy/Zomato ScrollSpy: Automatically highlights and auto-centers the active tab as user scrolls
+function setupScrollSpy() {
+  if (spyObserver) {
+    spyObserver.disconnect();
+  }
+
+  const sections = document.querySelectorAll('.category-group');
+  if (sections.length === 0) return;
+
+  const stickyBar = document.querySelector('.sticky-filter-wrapper');
+  const offset = stickyBar ? stickyBar.offsetHeight + 20 : 160;
+
+  spyObserver = new IntersectionObserver((entries) => {
+    if (isUserClickingTab) return;
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const catId = entry.target.id.replace('section-', '');
+        setActiveCategoryTab(catId);
+      }
+    });
+  }, {
+    rootMargin: `-${offset}px 0px -55% 0px`,
+    threshold: 0
+  });
+
+  sections.forEach(sec => spyObserver.observe(sec));
 }
 
 // Find item in all groups

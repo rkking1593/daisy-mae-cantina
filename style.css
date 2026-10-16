@@ -355,6 +355,8 @@ body {
   overflow-x: auto;
   scrollbar-width: none;
   padding-bottom: 4px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -388,6 +390,7 @@ body {
 
 .category-group {
   margin-bottom: 36px;
+  scroll-margin-top: 155px; /* Offset for sticky search & filter bar */
 }
 
 .category-header {
