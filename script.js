@@ -663,11 +663,127 @@ function updateCafeStatus() {
   }
 }
 
+// Dining Ambience Slideshow Logic (6 Real Khan Market Photos)
+function initDiningSlideshow() {
+  const container = document.getElementById('dining-slideshow');
+  if (!container) return;
+
+  const slides = container.querySelectorAll('.slideshow-slide');
+  const dots = container.querySelectorAll('.slide-dot');
+  const counter = document.getElementById('slideshow-counter');
+  const prevBtn = document.getElementById('slide-prev-btn');
+  const nextBtn = document.getElementById('slide-next-btn');
+
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  let timer = null;
+  const autoPlayDelay = 3800;
+
+  function showSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentIndex = index;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === currentIndex);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+
+    if (counter) {
+      counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+    }
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    timer = setInterval(nextSlide, autoPlayDelay);
+  }
+
+  function stopAutoPlay() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  // Next / Prev click handlers
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      nextSlide();
+      startAutoPlay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      prevSlide();
+      startAutoPlay();
+    });
+  }
+
+  // Dot click handlers
+  dots.forEach((dot) => {
+    dot.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const idx = parseInt(dot.getAttribute('data-index'), 10);
+      showSlide(idx);
+      startAutoPlay();
+    });
+  });
+
+  // Pause on hover
+  container.addEventListener('mouseenter', stopAutoPlay);
+  container.addEventListener('mouseleave', startAutoPlay);
+
+  // Mobile Touch Swipe Navigation
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  container.addEventListener('touchstart', (e) => {
+    stopAutoPlay();
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  container.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    startAutoPlay();
+  }, { passive: true });
+
+  // Start auto play initially
+  startAutoPlay();
+}
+
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
   renderCategoryTabs();
   renderMenu();
   updateCartState();
   updateCafeStatus();
+  initDiningSlideshow();
   setInterval(updateCafeStatus, 60000); // Check every minute
 });

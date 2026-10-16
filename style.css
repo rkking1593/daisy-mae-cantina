@@ -177,6 +177,271 @@ body {
   margin-bottom: 16px;
 }
 
+/* ============================================================
+   Dining Area Slideshow (Khan Market Interior Showcase)
+   ============================================================ */
+.dining-slideshow-wrap {
+  width: 100%;
+  margin: 14px 0 18px 0;
+}
+
+.dining-slideshow {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  background-color: var(--walnut);
+  border: 2px solid var(--walnut);
+  border-radius: var(--radius-lg);
+  box-shadow: 3.5px 3.5px 0 var(--walnut);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.slideshow-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slideshow-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.slideshow-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Subtle dark gradient overlay at top & bottom for legibility */
+.slideshow-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.05) 30%,
+    rgba(0, 0, 0, 0.1) 60%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  max-width: calc(100% - 130px);
+  background: rgba(42, 31, 24, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.slide-caption-tag {
+  background: var(--amber);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.slide-caption-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FAF7F2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slideshow-top-bar {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.slideshow-pill-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(42, 31, 24, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.slideshow-pill-live svg {
+  color: var(--amber);
+}
+
+.slideshow-counter {
+  background: rgba(42, 31, 24, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #FAF7F2;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2px solid var(--walnut);
+  box-shadow: 2px 2px 0 var(--walnut);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--walnut);
+  z-index: 5;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  padding: 0;
+}
+
+.slide-btn:hover {
+  background-color: #FAF7F2;
+  box-shadow: 1px 1px 0 var(--walnut);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slide-btn:active {
+  box-shadow: 0 0 0 var(--walnut);
+  transform: translateY(-50%) scale(0.96);
+}
+
+.slide-btn.prev {
+  left: 10px;
+}
+
+.slide-btn.next {
+  right: 10px;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 5;
+  background: rgba(42, 31, 24, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 5px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slide-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.slide-dot.active {
+  background: var(--amber);
+  width: 18px;
+  box-shadow: 0 0 6px rgba(213, 133, 31, 0.8);
+}
+
+@media (min-width: 768px) {
+  .dining-slideshow-wrap {
+    margin: 16px 0 20px 0;
+  }
+  .dining-slideshow {
+    height: 330px;
+    border-radius: 18px;
+    box-shadow: 4.5px 4.5px 0 var(--walnut);
+  }
+  .slide-caption {
+    bottom: 16px;
+    left: 16px;
+    padding: 7px 14px;
+    max-width: calc(100% - 150px);
+  }
+  .slide-caption-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  .slide-caption-text {
+    font-size: 13.5px;
+  }
+  .slide-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .slide-btn.prev {
+    left: 16px;
+  }
+  .slide-btn.next {
+    right: 16px;
+  }
+  .slideshow-dots {
+    bottom: 16px;
+    right: 16px;
+    padding: 6px 10px;
+  }
+}
+
 .hero-actions-row {
   display: flex;
   flex-direction: column;
