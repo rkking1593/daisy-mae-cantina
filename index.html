@@ -38,6 +38,7 @@
       max-width: 100%;
       width: 100%;
       position: relative;
+      padding-bottom: 0 !important;
     }
 
     *, *::before, *::after {
@@ -119,21 +120,40 @@
       border-radius: 8px;
     }
 
+    .brand-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
     .brand-title-group h2 {
       font-family: var(--font-display);
       font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.1;
+      line-height: 1;
       text-transform: uppercase;
     }
 
-    .brand-title-group span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--text-muted);
+    .brand-sub-cantina {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--walnut);
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      line-height: 1.15;
+      display: block;
+    }
+
+    .brand-sub-loc {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.15;
+      display: block;
     }
 
     .nav-actions {
@@ -854,7 +874,7 @@
       background: var(--walnut);
       color: #FFFFFF;
       border-top: 3px solid var(--text-main);
-      padding: 48px 20px 32px;
+      padding: 32px 20px 20px;
     }
 
     .footer-container {
@@ -1002,9 +1022,30 @@
         font-size: 1.15rem;
       }
 
+      .brand-sub-cantina {
+        font-size: 0.78rem;
+      }
+
+      .brand-sub-loc {
+        font-size: 0.68rem;
+      }
+
       .btn-brutal-menu {
         padding: 8px 14px;
         font-size: 0.82rem;
+      }
+
+      .landing-footer {
+        padding: 24px 16px 20px !important;
+      }
+
+      .footer-container {
+        gap: 20px !important;
+      }
+
+      .footer-top-row {
+        gap: 16px !important;
+        padding-bottom: 20px !important;
       }
     }
 
@@ -1052,7 +1093,8 @@
         <div class="brand-badge-square">🌮</div>
         <div class="brand-title-group">
           <h2>Daisy Mae</h2>
-          <span>Cantina · Khan Market</span>
+          <span class="brand-sub-cantina">Cantina</span>
+          <span class="brand-sub-loc">Khan Market</span>
         </div>
       </a>
 
@@ -1125,7 +1167,6 @@
               <div class="caption-dish">Daisy Mae Signature Table Spread</div>
               <div style="font-size:0.75rem; color:var(--text-muted);">Charred Elote, Adobo Skewers, Salsa Bowls & Agave Cooler</div>
             </div>
-            
           </div>
         </div>
       </div>
