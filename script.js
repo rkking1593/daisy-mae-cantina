@@ -7,7 +7,7 @@
 const CONFIG = {
   cafeName: 'Daisy Mae Cantina',
   whatsappNumber: '919889225517', // 91 + 9889225517
-  location: 'Shop No. 7, 2nd Floor, Khan Market, New Delhi',
+  location: 'First Floor, Khan Market, Rabindra Nagar, New Delhi 110003',
   instagram: 'https://instagram.com/daisymaecantina',
   phoneCall: '+919889225517',
   currency: '₹'
@@ -222,7 +222,7 @@ let cart = {}; // { itemId: { item, qty } }
 let activeCategory = MENU_DATA[0].id;
 let activeDiet = 'all'; // 'all', 'veg', 'nonveg'
 let searchQuery = '';
-let orderType = 'delivery'; // 'delivery', 'pickup', 'dinein'
+let orderType = 'pickup'; // 'pickup' (Takeaway) or 'dinein' (Dine-in)
 let isUserClickingTab = false;
 let spyObserver = null;
 
@@ -243,7 +243,6 @@ const drawerItemsList = document.getElementById('drawer-items-list');
 const drawerSubtotal = document.getElementById('drawer-subtotal');
 const drawerTotal = document.getElementById('drawer-total');
 const typeTabs = document.querySelectorAll('.type-tab');
-const deliveryFields = document.getElementById('delivery-fields');
 const dineinFields = document.getElementById('dinein-fields');
 const btnWhatsappOrder = document.getElementById('btn-whatsapp-order');
 const toastEl = document.getElementById('toast-msg');
@@ -530,21 +529,16 @@ function closeDrawer() {
   document.body.style.overflow = '';
 }
 
-// Order Type Selection
+// Order Type Selection (Takeaway and Dine-in)
 typeTabs.forEach(tab => {
   tab.addEventListener('click', () => {
     typeTabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     orderType = tab.dataset.type;
 
-    if (orderType === 'delivery') {
-      deliveryFields.style.display = 'flex';
-      dineinFields.style.display = 'none';
-    } else if (orderType === 'dinein') {
-      deliveryFields.style.display = 'none';
+    if (orderType === 'dinein') {
       dineinFields.style.display = 'flex';
     } else { // pickup
-      deliveryFields.style.display = 'none';
       dineinFields.style.display = 'none';
     }
   });
@@ -560,8 +554,7 @@ function handleWhatsAppCheckout() {
 
   const custName = document.getElementById('cust-name').value.trim();
   const custPhone = document.getElementById('cust-phone').value.trim();
-  const custAddress = document.getElementById('cust-address').value.trim();
-  const custTable = document.getElementById('cust-table').value.trim();
+  const custGuests = document.getElementById('cust-guests') ? document.getElementById('cust-guests').value.trim() : '';
   const custNotes = document.getElementById('cust-notes').value.trim();
 
   // Validate Basic Details
@@ -571,28 +564,22 @@ function handleWhatsAppCheckout() {
     return;
   }
 
-  if (orderType === 'delivery' && !custAddress) {
-    alert('Please enter your delivery address in Delhi NCR.');
-    document.getElementById('cust-address').focus();
-    return;
-  }
-
-  if (orderType === 'dinein' && !custTable) {
-    alert('Please enter your Table Number.');
-    document.getElementById('cust-table').focus();
+  if (!custPhone) {
+    alert('Please enter your phone number.');
+    document.getElementById('cust-phone').focus();
     return;
   }
 
   const subtotal = items.reduce((sum, entry) => sum + (entry.qty * entry.item.price), 0);
-  const typeLabel = orderType === 'delivery' ? '🛵 Home Delivery' : (orderType === 'dinein' ? `🍽️ Dine-in (Table ${custTable})` : '🛍️ Self-Pickup / Takeaway');
+  const typeLabel = orderType === 'dinein' ? '🍽️ Dine-in' : '🛍️ Takeaway';
 
   // Build formatted WhatsApp message
   let msg = `🛎️ *NEW DIRECT ORDER - DAISY MAE CANTINA*\n`;
   msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
   msg += `📍 *Order Type:* ${typeLabel}\n`;
   msg += `👤 *Customer:* ${custName}\n`;
-  if (custPhone) msg += `📞 *Phone:* ${custPhone}\n`;
-  if (orderType === 'delivery') msg += `🏠 *Delivery Address:* ${custAddress}\n`;
+  msg += `📞 *Phone:* ${custPhone}\n`;
+  if (orderType === 'dinein' && custGuests) msg += `👥 *Guests:* ${custGuests}\n`;
   if (custNotes) msg += `📝 *Notes:* ${custNotes}\n`;
   msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
   msg += `🍽️ *ORDER ITEMS:*\n`;

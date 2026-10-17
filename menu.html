@@ -160,8 +160,8 @@
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     <div>
-                      <strong class="loc-main-text">Shop No. 7, 2nd Floor</strong>
-                      <div class="loc-sub-text">Khan Market, New Delhi 110003</div>
+                      <strong class="loc-main-text">First Floor</strong>
+                      <div class="loc-sub-text">Khan Market, Rabindra Nagar, New Delhi 110003</div>
                     </div>
                   </div>
                 </div>
@@ -197,7 +197,7 @@
                 </div>
                 <div class="loc-tag-item">
                   <span class="loc-tag-icon">✨</span>
-                  <span>2nd Floor Sunlit Skylight &amp; Neon Bar Vibes</span>
+                  <span>Sunlit Skylight &amp; Neon Bar Vibes</span>
                 </div>
               </div>
             </div>
@@ -261,7 +261,7 @@
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          <div><strong>Shop No. 7, 2nd Floor</strong>, Khan Market, Rabindra Nagar, New Delhi 110003</div>
+          <div><strong>First Floor</strong>, Khan Market, Rabindra Nagar, New Delhi 110003</div>
         </div>
 
         <div class="footer-info-row">
@@ -331,10 +331,9 @@
       </div>
 
       <div class="drawer-body">
-        <!-- Order Type Selector -->
+        <!-- Order Type Selector: Takeaway and Dine-in Only -->
         <div class="order-type-tabs">
-          <button class="type-tab active" data-type="delivery">🛵 Delivery</button>
-          <button class="type-tab" data-type="pickup">🛍️ Takeaway</button>
+          <button class="type-tab active" data-type="pickup">🛍️ Takeaway</button>
           <button class="type-tab" data-type="dinein">🍽️ Dine-in</button>
         </div>
 
@@ -348,18 +347,13 @@
           </div>
 
           <div class="form-group">
-            <label for="cust-phone">Phone Number (Optional)</label>
-            <input type="tel" id="cust-phone" class="form-input" placeholder="e.g. 9876543210">
-          </div>
-
-          <div class="form-group" id="delivery-fields">
-            <label for="cust-address">Delivery Address *</label>
-            <textarea id="cust-address" class="form-input" placeholder="House/Flat number, Building, Street, Area (Delhi NCR)"></textarea>
+            <label for="cust-phone">Phone Number *</label>
+            <input type="tel" id="cust-phone" class="form-input" placeholder="e.g. 9876543210" required>
           </div>
 
           <div class="form-group" id="dinein-fields" style="display: none;">
-            <label for="cust-table">Table Number *</label>
-            <input type="text" id="cust-table" class="form-input" placeholder="e.g. Table 4">
+            <label for="cust-guests">Number of Guests (Optional)</label>
+            <input type="number" id="cust-guests" class="form-input" min="1" max="20" placeholder="e.g. 2">
           </div>
 
           <div class="form-group">
