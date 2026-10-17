@@ -13,10 +13,13 @@
   <meta property="og:description" content="Modern Mexican Kitchen & Agave Bar. Authentic birria tacos, artisanal nachos, and handcrafted sips.">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts: Space Grotesk (Chunky Neo-Brutalist) & Plus Jakarta Sans & Playfair Display -->
+  <!-- Preload Hero Image / LCP -->
+  <link rel="preload" as="image" href="images/hero-800w.webp" imagesrcset="images/hero-480w.webp 480w, images/hero-800w.webp 800w, images/hero-1200w.webp 1200w" imagesizes="(max-width: 768px) 100vw, 540px" fetchpriority="high">
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans with display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <style>
@@ -126,7 +129,8 @@
       gap: 1px;
     }
 
-    .brand-title-group h2 {
+    .brand-title-group h2,
+    .brand-title-group .brand-title {
       font-family: var(--font-display);
       font-size: 1.35rem;
       font-weight: 700;
@@ -1081,6 +1085,14 @@
         padding: 10px 14px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body class="landing-body">
@@ -1106,7 +1118,7 @@
       <a href="index.html" class="brand-logo-wrap">
         <div class="brand-badge-square">🌮</div>
         <div class="brand-title-group">
-          <h2>Daisy Mae</h2>
+          <div class="brand-title">Daisy Mae</div>
           <span class="brand-sub-cantina">Cantina</span>
           <span class="brand-sub-loc">Khan Market</span>
         </div>
@@ -1174,7 +1186,15 @@
       <!-- Hero Poster Image Card with Real Daisy Mae Cantina Spread -->
       <div class="hero-poster-frame">
         <div class="hero-poster-card">
-          <img src="daisy_mae_table.jpg" alt="Daisy Mae Cantina Table Spread at Khan Market" class="hero-poster-img">
+          <img src="images/hero-800w.webp"
+               srcset="images/hero-480w.webp 480w, images/hero-800w.webp 800w, images/hero-1200w.webp 1200w"
+               sizes="(max-width: 768px) 100vw, 540px"
+               width="800" height="800"
+               fetchpriority="high"
+               loading="eager"
+               decoding="async"
+               alt="Daisy Mae Cantina Table Spread at Khan Market"
+               class="hero-poster-img">
           <div class="poster-sticker-tag">Cantina Original ✨</div>
           <div class="poster-bottom-caption">
             <div>
@@ -1202,7 +1222,7 @@
       <!-- Dish 1: Crispy Baja Shrimp Tacos -->
       <article class="dish-showcase-card">
         <div class="dish-card-img-wrap">
-          <img src="daisy_drinks_6.jpg" alt="Crispy Baja Prawn / Fish Tacos at Daisy Mae">
+          <img src="images/daisy_drinks_6.webp" width="800" height="800" loading="lazy" decoding="async" alt="Crispy Baja Prawn / Fish Tacos at Daisy Mae">
           <span class="badge-card-tag">Signature Taco</span>
         </div>
         <div class="dish-card-content">
@@ -1227,7 +1247,7 @@
       <!-- Dish 2: Fire-Roasted Ribs / Elote -->
       <article class="dish-showcase-card">
         <div class="dish-card-img-wrap">
-          <img src="daisy_bar_3.jpg" alt="Charred Mexican Street Corn Ribs at Daisy Mae">
+          <img src="images/daisy_bar_3.webp" width="800" height="800" loading="lazy" decoding="async" alt="Charred Mexican Street Corn Ribs at Daisy Mae">
           <span class="badge-card-tag" style="background:var(--walnut);">Cantina Special</span>
         </div>
         <div class="dish-card-content">
@@ -1252,7 +1272,7 @@
       <!-- Dish 3: Loaded Cantina Nachos Fiesta -->
       <article class="dish-showcase-card">
         <div class="dish-card-img-wrap">
-          <img src="daisy_interior_2.jpg" alt="Loaded Cantina Nachos Fiesta at Daisy Mae">
+          <img src="images/daisy_interior_2.webp" width="648" height="800" loading="lazy" decoding="async" alt="Loaded Cantina Nachos Fiesta at Daisy Mae">
           <span class="badge-card-tag" style="background:var(--amber);">Bestseller</span>
         </div>
         <div class="dish-card-content">
@@ -1280,7 +1300,7 @@
   <section class="story-section">
     <div class="story-grid">
       <div class="story-frame">
-        <img src="daisy_ambience_1.jpg" alt="Daisy Mae Cantina 2nd Floor Dining Hall in Khan Market" class="story-img-main">
+        <img src="images/daisy_ambience_1.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Daisy Mae Cantina 2nd Floor Dining Hall in Khan Market" class="story-img-main">
         <div class="story-stamp">
           <div>KHAN MARKET</div>
           <div style="font-size:0.7rem; font-weight:500;">2nd Floor Cantina</div>
@@ -1329,27 +1349,27 @@
 
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="daisy_ambience_2.jpg" alt="Daisy Mae Leather Booths & Handpainted Cactus Mural">
+        <img src="images/daisy_ambience_2.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Daisy Mae Leather Booths & Handpainted Cactus Mural">
         <span class="gallery-label">Cactus Mural Booths</span>
       </div>
       <div class="gallery-item">
-        <img src="daisy_ambience_5.jpg" alt="Daisy Mae Neon Bar Counter with Papel Picado Banners">
+        <img src="images/daisy_ambience_5.webp" width="925" height="1200" loading="lazy" decoding="async" alt="Daisy Mae Neon Bar Counter with Papel Picado Banners">
         <span class="gallery-label">Neon Cantina Bar</span>
       </div>
       <div class="gallery-item">
-        <img src="daisy_ambience_3.jpg" alt="Cozy Dining Corner with Tiled Tables & Retro Posters">
+        <img src="images/daisy_ambience_3.webp" width="934" height="1200" loading="lazy" decoding="async" alt="Cozy Dining Corner with Tiled Tables & Retro Posters">
         <span class="gallery-label">Cozy Dining Corner</span>
       </div>
       <div class="gallery-item">
-        <img src="daisy_drinks_6.jpg" alt="Baja Crispy Street Tacos at Daisy Mae">
+        <img src="images/daisy_drinks_6.webp" width="800" height="800" loading="lazy" decoding="async" alt="Baja Crispy Street Tacos at Daisy Mae">
         <span class="gallery-label">Baja Street Tacos</span>
       </div>
       <div class="gallery-item">
-        <img src="daisy_bar_3.jpg" alt="Charred Street Corn Ribs Elote">
+        <img src="images/daisy_bar_3.webp" width="800" height="800" loading="lazy" decoding="async" alt="Charred Street Corn Ribs Elote">
         <span class="gallery-label">Charred Corn Ribs</span>
       </div>
       <div class="gallery-item">
-        <img src="daisy_interior_1.jpg" alt="Artisanal Kiwi Basil Agave Cooler on Daisy Mae Branded Coaster">
+        <img src="images/daisy_interior_1.webp" width="699" height="800" loading="lazy" decoding="async" alt="Artisanal Kiwi Basil Agave Cooler on Daisy Mae Branded Coaster">
         <span class="gallery-label">Kiwi Agave Cooler</span>
       </div>
     </div>
@@ -1417,7 +1437,7 @@
         </div>
       </div>
       <div class="footer-bottom-copy">
-        <p><p>Prototype made for Daisy Mae Cantina · not the official website.</p></p>
+        <p>Prototype made for Daisy Mae Cantina · not the official website.</p>
         <div style="margin-top: 14px; display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; color: #D6CCC2;">
           <span>Designed &amp; Developed by</span>
           <strong style="color: #FFFFFF; font-weight: 800;">Sarthak Upadhyay</strong>

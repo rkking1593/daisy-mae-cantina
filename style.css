@@ -13,18 +13,18 @@
   
   --text-main: #2A1F18;          /* Deep roasted walnut tone */
   --text-muted: #64564B;
-  --text-light: #948577;
+  --text-light: #706358;         /* Accessible contrast >= 5:1 on cream */
   
-  --primary: #87A96B;           /* Fresh Sage Green */
-  --primary-hover: #729456;
+  --primary: #4F7A3A;           /* Darkened Sage Green (contrast > 5:1 with white) */
+  --primary-hover: #3E632D;
   --primary-light: #EEF4EA;
   
   --walnut: #5A3E2B;            /* Deep Walnut Brown */
   --walnut-hover: #483121;
   --walnut-light: #F4EFEB;
   
-  --amber: #D5851F;             /* Golden Amber Glow Accent */
-  --amber-hover: #BE7214;
+  --amber: #9A5A0A;             /* Accessible Amber Accent (contrast > 5:1 on cream) */
+  --amber-hover: #7E4907;
   --amber-light: #FDF5E9;
   
   --agave: #5A3E2B;             /* Using Walnut for primary action accents */
@@ -1662,5 +1662,25 @@ textarea.form-input {
 @media (min-width: 1200px) {
   .category-dishes {
     gap: 20px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .slideshow-slide {
+    transition: none !important;
+  }
+
+  .dish-card, .btn-add, .action-chip-card, .cat-btn, .slide-btn {
+    transition: none !important;
   }
 }

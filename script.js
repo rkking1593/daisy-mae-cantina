@@ -27,7 +27,7 @@ const MENU_DATA = [
         desc: 'Tempura-crisp tiger prawns or adobo fish, chunky house guacamole, shredded slaw & salsa verde on warm corn tortillas.',
         bestseller: true,
         spicy: false,
-        img: 'daisy_drinks_6.jpg'
+        img: 'images/daisy_drinks_6.webp'
       },
       {
         id: 'birria-tacos',
@@ -73,7 +73,7 @@ const MENU_DATA = [
         desc: 'Stoneground corn nachos loaded with adobo grilled chicken, melted Oaxaca cheese, refried black beans, sour cream, guacamole & fresh pico de gallo.',
         bestseller: true,
         spicy: true,
-        img: 'daisy_interior_2.jpg'
+        img: 'images/daisy_interior_2.webp'
       },
       {
         id: 'street-elote',
@@ -83,7 +83,7 @@ const MENU_DATA = [
         desc: 'Spiral charred sweet corn ribs brushed with cilantro lime butter, cotija cheese crumbles, fresh herbs & house ancho chile dust.',
         bestseller: true,
         spicy: true,
-        img: 'daisy_bar_3.jpg'
+        img: 'images/daisy_bar_3.webp'
       },
       {
         id: 'cantina-fried-torta',
@@ -93,7 +93,7 @@ const MENU_DATA = [
         desc: 'Buttermilk fried crispy chicken thigh, avocado mash, chipotle mayo, pickled jalapeños on grilled brioche with spiced fries.',
         bestseller: false,
         spicy: true,
-        img: 'daisy_tacos_4.jpg'
+        img: 'images/daisy_tacos_4.webp'
       },
       {
         id: 'tableside-guac',
@@ -119,7 +119,7 @@ const MENU_DATA = [
         desc: 'Fire-grilled skewered prawns & scallions drizzled with herb chimichurri, served over Mexican red rice, refried beans, charred corn & house salsa.',
         bestseller: true,
         spicy: false,
-        img: 'daisy_food_7.jpg'
+        img: 'images/daisy_food_7.webp'
       },
       {
         id: 'four-cheese-quesadilla',
@@ -129,7 +129,7 @@ const MENU_DATA = [
         desc: 'Golden grilled flour tortilla stuffed with melted Oaxaca cheese, served with fragrant Spanish rice, guacamole, sour cream & salsa verde.',
         bestseller: true,
         spicy: false,
-        img: 'daisy_nachos_5.jpg'
+        img: 'images/daisy_nachos_5.webp'
       },
       {
         id: 'tinga-quesadilla',
@@ -191,7 +191,7 @@ const MENU_DATA = [
         desc: 'Muddled golden kiwi slices, sweet basil leaves, fresh Mexican lime juice, organic blue agave nectar and soda over crushed ice.',
         bestseller: true,
         spicy: false,
-        img: 'daisy_interior_1.jpg'
+        img: 'images/daisy_interior_1.webp'
       },
       {
         id: 'hibiscus-agua-fresca',
@@ -319,7 +319,7 @@ function dishCardHtml(item) {
       <div class="dish-action-col ${hasImg ? '' : 'no-img'}">
         ${hasImg ? `
         <div class="dish-img-box">
-          <img src="${item.img}" alt="${item.name}" class="dish-img" loading="lazy" onerror="this.onerror=null;this.parentElement.style.display='none';this.closest('.dish-action-col').classList.add('no-img');"/>
+          <img src="${item.img}" alt="${item.name}" class="dish-img" width="110" height="95" loading="lazy" decoding="async" onerror="this.onerror=null;this.parentElement.style.display='none';this.closest('.dish-action-col').classList.add('no-img');"/>
         </div>
         ` : ''}
         <div class="btn-add-container" id="control-${item.id}">
@@ -506,9 +506,9 @@ function renderDrawerItems() {
       </div>
       <div class="drawer-item-right">
         <div class="drawer-stepper">
-          <button onclick="updateItemQty('${item.id}', -1)">−</button>
+          <button onclick="updateItemQty('${item.id}', -1)" aria-label="Decrease quantity">−</button>
           <span>${qty}</span>
-          <button onclick="updateItemQty('${item.id}', 1)">+</button>
+          <button onclick="updateItemQty('${item.id}', 1)" aria-label="Increase quantity">+</button>
         </div>
         <span class="drawer-item-total">${formatINR(item.price * qty)}</span>
       </div>
@@ -753,7 +753,18 @@ function initDiningSlideshow() {
 
   // Pause on hover
   container.addEventListener('mouseenter', stopAutoPlay);
-  container.addEventListener('mouseleave', startAutoPlay);
+  container.addEventListener('mouseleave', () => {
+    if (!document.hidden) startAutoPlay();
+  });
+
+  // Pause slideshow autoplay when tab is hidden (Lighthouse / Performance)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoPlay();
+    } else {
+      startAutoPlay();
+    }
+  });
 
   // Mobile Touch Swipe Navigation
   let touchStartX = 0;
@@ -774,11 +785,14 @@ function initDiningSlideshow() {
         prevSlide();
       }
     }
-    startAutoPlay();
+    if (!document.hidden) startAutoPlay();
   }, { passive: true });
 
-  // Start auto play initially
-  startAutoPlay();
+  // Start auto play initially if reduced motion is not requested
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced) {
+    startAutoPlay();
+  }
 }
 
 // Initialization

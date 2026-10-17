@@ -13,12 +13,16 @@
   <meta property="og:description" content="Mexican Cantina in Khan Market. View digital menu & order directly on WhatsApp.">
   <meta property="og:type" content="website">
 
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <!-- Preload LCP Element (First Slideshow Slide) -->
+  <link rel="preload" as="image" href="images/daisy_ambience_1-800w.webp" imagesrcset="images/daisy_ambience_1-480w.webp 480w, images/daisy_ambience_1-800w.webp 800w, images/daisy_ambience_1-1080w.webp 1080w" imagesizes="(max-width: 768px) 100vw, 490px" fetchpriority="high">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display with display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -56,9 +60,14 @@
           <div class="dining-slideshow-wrap">
             <div class="dining-slideshow" id="dining-slideshow" aria-label="Daisy Mae Khan Market Dining Area Slideshow">
               <div class="slideshow-track" id="slideshow-track">
-                <!-- Slide 1 -->
+                <!-- Slide 1 (LCP Element) -->
                 <div class="slideshow-slide active">
-                  <img src="daisy_ambience_1.jpg" alt="Daisy Mae Main Skylight Dining Hall and Leather Booths">
+                  <img src="images/daisy_ambience_1-800w.webp"
+                       srcset="images/daisy_ambience_1-480w.webp 480w, images/daisy_ambience_1-800w.webp 800w, images/daisy_ambience_1-1080w.webp 1080w"
+                       sizes="(max-width: 768px) 100vw, 490px"
+                       width="1080" height="720"
+                       fetchpriority="high"
+                       alt="Daisy Mae Main Skylight Dining Hall and Leather Booths">
                   <div class="slide-caption">
                     <span class="slide-caption-tag">Main Dining Hall</span>
                     <span class="slide-caption-text">Sunlit Skylight Roof &amp; Checkered Floor</span>
@@ -66,7 +75,7 @@
                 </div>
                 <!-- Slide 2 -->
                 <div class="slideshow-slide">
-                  <img src="daisy_ambience_4.jpg" alt="Cactus Floral Mural and Hanging Lanterns Booth Seating">
+                  <img src="images/daisy_ambience_4.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Cactus Floral Mural and Hanging Lanterns Booth Seating">
                   <div class="slide-caption">
                     <span class="slide-caption-tag">Booth Seating</span>
                     <span class="slide-caption-text">Handpainted Mural &amp; Piñata Woven Lamps</span>
@@ -74,7 +83,7 @@
                 </div>
                 <!-- Slide 3 -->
                 <div class="slideshow-slide">
-                  <img src="daisy_ambience_3.jpg" alt="Cozy Cantina Dining Corner with Tiled Tables">
+                  <img src="images/daisy_ambience_3.webp" width="934" height="1200" loading="lazy" decoding="async" alt="Cozy Cantina Dining Corner with Tiled Tables">
                   <div class="slide-caption">
                     <span class="slide-caption-tag">Cozy Dining Nook</span>
                     <span class="slide-caption-text">Yellow Tiled Tables &amp; Vintage Posters</span>
@@ -82,7 +91,7 @@
                 </div>
                 <!-- Slide 4 -->
                 <div class="slideshow-slide">
-                  <img src="daisy_ambience_5.jpg" alt="Neon Lit Cantina Bar Counter with Papel Picado">
+                  <img src="images/daisy_ambience_5.webp" width="925" height="1200" loading="lazy" decoding="async" alt="Neon Lit Cantina Bar Counter with Papel Picado">
                   <div class="slide-caption">
                     <span class="slide-caption-tag">The Cantina Bar</span>
                     <span class="slide-caption-text">&ldquo;¿Qué Tanto Es Tantito?&rdquo; Neon &amp; Agave</span>
@@ -90,7 +99,7 @@
                 </div>
                 <!-- Slide 5 -->
                 <div class="slideshow-slide">
-                  <img src="daisy_ambience_2.jpg" alt="Giant Cactus Mural Leather Dining Booths">
+                  <img src="images/daisy_ambience_2.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Giant Cactus Mural Leather Dining Booths">
                   <div class="slide-caption">
                     <span class="slide-caption-tag">Artisan Lounge</span>
                     <span class="slide-caption-text">Plush Leather Banquet for Family &amp; Friends</span>
@@ -98,7 +107,7 @@
                 </div>
                 <!-- Slide 6 -->
                 <div class="slideshow-slide">
-                  <img src="daisy_ambience_6.jpg" alt="Sunlit Patio Balcony Seating with Margarita Wall">
+                  <img src="images/daisy_ambience_6.webp" width="928" height="1200" loading="lazy" decoding="async" alt="Sunlit Patio Balcony Seating with Margarita Wall">
                   <div class="slide-caption">
                     <span class="slide-caption-tag">Patio Dining</span>
                     <span class="slide-caption-text">Sunlit Khan Market Terrace Cafe Tables</span>
@@ -242,7 +251,7 @@
     <!-- Khan Market Local SEO & Info Card -->
     <footer class="cantina-footer">
       <div class="footer-card">
-        <h3 class="footer-title">Visit Daisy Mae Cantina</h3>
+        <h2 class="footer-title">Visit Daisy Mae Cantina</h2>
 
         <div class="footer-info-row">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -289,7 +298,7 @@
     </footer>
 
     <!-- Sticky Floating Bottom Cart Bar -->
-    <div class="cart-floating-bar" id="cart-floating-bar">
+    <div class="cart-floating-bar" id="cart-floating-bar" role="button" tabindex="0" aria-label="View order details and checkout">
       <div class="cart-bar-left">
         <span class="cart-bar-count" id="cart-bar-count">0 items</span>
         <span class="cart-bar-total" id="cart-bar-total">₹0</span>
@@ -392,6 +401,5 @@
 
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
