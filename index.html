@@ -25,10 +25,23 @@
       --font-display: 'Space Grotesk', -apple-system, sans-serif;
     }
 
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+      width: 100%;
+    }
+
     .landing-body {
       background-color: var(--bg-body);
       color: var(--text-main);
       overflow-x: hidden;
+      max-width: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
     }
 
     /* Top Announcement Bar */
@@ -44,6 +57,12 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid var(--text-main);
+    }
+
+    @media (max-width: 768px) {
+      .top-marquee {
+        display: none !important;
+      }
     }
 
     .top-marquee-inner {
@@ -221,13 +240,15 @@
 
     .hero-big-heading {
       font-family: var(--font-display);
-      font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+      font-size: clamp(1.85rem, 6vw, 3.6rem);
       font-weight: 700;
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--text-main);
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .hero-big-heading .highlight-sage {
@@ -238,13 +259,6 @@
       border: 2px solid var(--walnut);
       box-shadow: 3px 3px 0 var(--walnut);
       transform: rotate(-1deg);
-    }
-
-    .hero-big-heading .highlight-amber {
-      color: var(--amber);
-      font-style: italic;
-      font-family: var(--font-serif);
-      text-transform: none;
     }
 
     .hero-lead-text {
@@ -309,37 +323,47 @@
 
     /* Hero Trust Metrics Strip */
     .hero-stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      display: flex;
       padding-top: 18px;
       border-top: 2px dashed var(--border);
     }
 
-    .stat-card {
+    .hero-stats-row .stat-card {
+      width: 100%;
       background: var(--bg-card);
       border: 2px solid var(--walnut);
-      border-radius: 10px;
-      padding: 12px 10px;
-      box-shadow: 2px 2px 0 var(--walnut);
-      text-align: center;
+      border-radius: 12px;
+      padding: 12px 18px;
+      box-shadow: 2.5px 2.5px 0 var(--walnut);
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .stat-number {
+    .stat-badge-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: #15803D;
+      color: #FFFFFF;
       font-family: var(--font-display);
-      font-size: 1.35rem;
       font-weight: 700;
-      color: var(--walnut);
+      font-size: 1.05rem;
+      padding: 4px 9px;
+      border-radius: 6px;
       line-height: 1;
-      margin-bottom: 4px;
+      flex-shrink: 0;
     }
 
-    .stat-label {
-      font-size: 0.72rem;
+    .stat-badge-rating .stat-star {
+      font-size: 0.9rem;
+    }
+
+    .stat-label-text {
+      font-size: 0.85rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
+      color: var(--text-main);
+      line-height: 1.35;
     }
 
     /* Hero Image Poster Card */
@@ -400,52 +424,6 @@
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--walnut);
-    }
-
-    /* VALUE BANNER STRIP */
-    .ticker-strip {
-      background: var(--primary);
-      border-top: 2.5px solid var(--walnut);
-      border-bottom: 2.5px solid var(--walnut);
-      padding: 16px 20px;
-      margin: 40px 0;
-    }
-
-    .ticker-container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .ticker-pill {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #FFFFFF;
-      border: 2px solid var(--walnut);
-      border-radius: 12px;
-      padding: 12px 16px;
-      box-shadow: 3px 3px 0 var(--walnut);
-    }
-
-    .ticker-icon {
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .ticker-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text-main);
-    }
-
-    .ticker-sub {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 600;
     }
 
     /* SIGNATURE DISHES SHOWCASE */
@@ -672,16 +650,16 @@
     .story-stamp {
       position: absolute;
       bottom: -16px;
-      right: -12px;
+      right: 0;
       background: var(--amber);
       color: #FFFFFF;
       border: 2px solid var(--walnut);
       box-shadow: 3px 3px 0 var(--walnut);
       border-radius: 12px;
-      padding: 12px 18px;
+      padding: 10px 16px;
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-align: center;
       line-height: 1.2;
     }
@@ -947,6 +925,107 @@
       text-align: center;
       line-height: 1.5;
     }
+
+    /* ============================================================
+       MOBILE-FIRST REFINEMENTS & SHADOW REDUCTION (6px -> 3px)
+       ============================================================ */
+    @media (max-width: 768px) {
+      /* Mobile Shadows: Reduced from 6px to 3px */
+      .hero-poster-card,
+      .story-img-main,
+      .visit-card,
+      .visit-cta-card,
+      .dish-showcase-card,
+      .dish-showcase-card:hover {
+        box-shadow: 3px 3px 0 var(--walnut) !important;
+      }
+
+      .btn-hero-primary,
+      .btn-hero-primary:hover {
+        box-shadow: 3px 3px 0 var(--amber) !important;
+      }
+
+      .btn-hero-secondary,
+      .btn-hero-secondary:hover {
+        box-shadow: 3px 3px 0 var(--walnut) !important;
+      }
+
+      .story-stamp {
+        right: 8px !important;
+        bottom: -10px !important;
+        padding: 8px 12px !important;
+        font-size: 0.78rem !important;
+        box-shadow: 2px 2px 0 var(--walnut) !important;
+      }
+
+      .hero-poster-img {
+        height: 280px;
+      }
+
+      .story-img-main {
+        height: 290px;
+      }
+
+      .hero-section {
+        padding: 24px 16px 32px;
+      }
+
+      .section-wrap {
+        padding: 32px 16px;
+      }
+
+      .story-section {
+        padding: 38px 16px;
+      }
+
+      .visit-card-wrap {
+        padding: 0 16px;
+        margin: 28px auto 36px;
+      }
+
+      .visit-card {
+        padding: 24px 18px;
+        border-width: 2.5px;
+      }
+
+      .site-nav {
+        padding: 10px 16px;
+      }
+
+      .brand-badge-square {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      .brand-title-group h2 {
+        font-size: 1.15rem;
+      }
+
+      .btn-brutal-menu {
+        padding: 8px 14px;
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero-stats-row .stat-card {
+        padding: 10px 14px;
+      }
+    }
   </style>
 </head>
 <body class="landing-body">
@@ -978,15 +1057,6 @@
       </a>
 
       <div class="nav-actions">
-        <a href="https://instagram.com/daisymaecantina" target="_blank" rel="noopener" class="btn-brutal-ghost">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-          <span>Instagram</span>
-        </a>
-
         <a href="menu.html" class="btn-brutal-menu">
           <span>Digital Menu & Order</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1008,11 +1078,11 @@
         </div>
 
         <h1 class="hero-big-heading">
-          Where Mexico City meets <span class="highlight-sage">Khan Market's</span> <span class="highlight-amber">passion.</span>
+          Where Mexico City meets <span class="highlight-sage">Khan Market</span>
         </h1>
 
         <p class="hero-lead-text">
-          Crispy slow-braised Birria tacos with hot dipping consommé, towering plates of melted Oaxaca nachos, handmade churros, and artisanal agave coolers. Handcrafted fresh every afternoon.
+          Slow-braised birria tacos, loaded artisanal nachos, and handcrafted agave coolers in the heart of Khan Market.
         </p>
 
         <div class="hero-cta-group">
@@ -1034,16 +1104,13 @@
         <!-- Real-time metrics -->
         <div class="hero-stats-row">
           <div class="stat-card">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Authentic Masa</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">0%</div>
-            <div class="stat-label">Zomato Commission</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">4.4★</div>
-            <div class="stat-label">on Zomato · 1,500+ ratings</div>
+            <div class="stat-badge-rating">
+              <span>4.4</span>
+              <span class="stat-star">★</span>
+            </div>
+            <div class="stat-label-text">
+              Rated on Zomato · 1,500+ Verified Diners in Khan Market
+            </div>
           </div>
         </div>
       </div>
@@ -1064,33 +1131,6 @@
       </div>
     </div>
   </header>
-
-  <!-- VALUE PROPOSITION TICKER STRIP -->
-  <section class="ticker-strip">
-    <div class="ticker-container">
-      <div class="ticker-pill">
-        <div class="ticker-icon">🥑</div>
-        <div>
-          <div class="ticker-title">Fresh Everyday</div>
-          <div class="ticker-sub">Avocados & salsas mashed per order</div>
-        </div>
-      </div>
-      <div class="ticker-pill">
-        <div class="ticker-icon">⚡</div>
-        <div>
-          <div class="ticker-title">Direct WhatsApp Order</div>
-          <div class="ticker-sub">No middlemen, straight to the kitchen</div>
-        </div>
-      </div>
-      <div class="ticker-pill">
-        <div class="ticker-icon">🧀</div>
-        <div>
-          <div class="ticker-title">Real Oaxaca Cheese</div>
-          <div class="ticker-sub">Gooey, stretchy, traditional stretch</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- SIGNATURE DISHES SHOWCASE -->
   <section class="section-wrap">
