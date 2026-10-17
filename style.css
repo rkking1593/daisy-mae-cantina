@@ -61,6 +61,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-body);
@@ -68,7 +73,6 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   padding-bottom: 120px;
-  overflow-x: hidden;
 }
 
 /* Full Width App Container */
@@ -79,6 +83,7 @@ body {
   min-height: 100vh;
   background-color: var(--bg-body);
   position: relative;
+  overflow-x: clip;
 }
 
 /* Header & Hero Section */
@@ -92,6 +97,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 16px;
 }
 
@@ -107,6 +114,7 @@ body {
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 .brand-tag .status-dot {
@@ -495,8 +503,8 @@ body {
 /* The 3 Action Buttons Grid */
 .quick-actions-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
   width: 100%;
 }
 
@@ -504,10 +512,11 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 12.5px;
+  gap: 5px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 9px 8px;
+  padding: 8px 4px;
+  min-width: 0;
   border-radius: 10px;
   border: 1.5px solid var(--walnut);
   box-shadow: 2px 2px 0 var(--walnut);
@@ -517,6 +526,16 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   white-space: nowrap;
   box-sizing: border-box;
+}
+
+.action-chip-card span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.action-chip-card svg {
+  flex-shrink: 0;
 }
 
 .action-chip-card:hover {
@@ -625,34 +644,19 @@ body {
   }
 }
 
-/* Commission-Free Notice Banner */
-.commission-banner {
-  margin-top: 14px;
-  background: #FEF7ED;
-  border: 1px dashed #FDBA74;
-  border-radius: var(--radius-md);
-  padding: 10px 14px;
+/* Filter Controls Section (Normal Scroll) */
+.filter-controls-section {
+  padding: 14px 20px 6px;
+  background: var(--bg-body);
+}
+
+.filter-controls-bar {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
 }
 
-.commission-banner .icon {
-  font-size: 18px;
-}
-
-.commission-banner .text {
-  font-size: 12.5px;
-  color: #9A3412;
-  font-weight: 500;
-  line-height: 1.35;
-}
-
-.commission-banner strong {
-  color: #7C2D12;
-}
-
-/* Sticky Navigation & Search Bar */
+/* Sticky Navigation: Category Tabs Only */
 .sticky-filter-wrapper {
   position: sticky;
   top: 0;
@@ -660,15 +664,8 @@ body {
   background: rgba(250, 247, 242, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 14px 20px 10px;
+  padding: 8px 20px 8px;
   border-bottom: 1px solid var(--border);
-}
-
-.filter-controls-bar {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 12px;
 }
 
 .search-box {
@@ -924,6 +921,10 @@ body {
   color: var(--text-muted);
   line-height: 1.45;
   margin-top: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Card Image & Add Stepper */
@@ -932,8 +933,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   flex-shrink: 0;
   position: relative;
+}
+
+.dish-action-col.no-img {
+  width: 90px;
+  justify-content: flex-end;
+}
+
+.dish-card.no-img {
+  align-items: stretch;
+}
+
+.dish-action-col.no-img .btn-add-container {
+  margin-top: 0;
+  width: 100%;
 }
 
 .dish-img-box {
@@ -1525,13 +1541,13 @@ textarea.form-input {
     max-width: 760px;
   }
 
-  .commission-banner {
-    max-width: 100%;
+  /* Desktop Filter Controls: Search and Diet Side-by-Side */
+  .filter-controls-section {
+    padding: 16px 36px 10px;
   }
 
-  /* Desktop Filter Controls: Search and Diet Side-by-Side */
   .sticky-filter-wrapper {
-    padding: 16px 36px 12px;
+    padding: 10px 36px 10px;
   }
 
   .filter-controls-bar {
@@ -1596,6 +1612,41 @@ textarea.form-input {
 
   .drawer-drag-handle {
     display: none;
+  }
+}
+
+/* ============================================================
+   MOBILE OPTIMIZATIONS (<= 520px)
+   ============================================================ */
+@media (max-width: 520px) {
+  /* Hide slideshow captions on mobile */
+  .slide-caption {
+    display: none !important;
+  }
+
+  /* Hide opening hours pill from header on small screens to declutter */
+  .brand-tag#cafe-status-tag {
+    display: none;
+  }
+
+  .cantina-header {
+    padding: 16px 14px 14px;
+  }
+
+  .cantina-location-card {
+    padding: 14px 12px;
+  }
+
+  .filter-controls-section {
+    padding: 12px 14px 4px;
+  }
+
+  .sticky-filter-wrapper {
+    padding: 6px 14px 6px;
+  }
+
+  .menu-container {
+    padding: 16px 14px;
   }
 }
 

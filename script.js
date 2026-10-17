@@ -6,7 +6,7 @@
 // Configuration (Placeholder WhatsApp as requested)
 const CONFIG = {
   cafeName: 'Daisy Mae Cantina',
-  whatsappNumber: '919889225517', // 91 + 9999999999
+  whatsappNumber: '919889225517', // 91 + 9889225517
   location: 'Shop No. 7, 2nd Floor, Khan Market, New Delhi',
   instagram: 'https://instagram.com/daisymaecantina',
   phoneCall: '+919889225517',
@@ -37,7 +37,7 @@ const MENU_DATA = [
         desc: 'Tender braised pulled meat, melted Oaxaca cheese, cilantro & onion in crispy grilled corn tortillas with rich dipping consommé.',
         bestseller: true,
         spicy: true,
-        img: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80'
+        img: null
       },
       {
         id: 'baja-avocado-taco',
@@ -47,7 +47,7 @@ const MENU_DATA = [
         desc: 'Crispy panko avocado spears, pickled purple cabbage slaw, chipotle crema & charred salsa verde.',
         bestseller: false,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80'
+        img: null
       },
       {
         id: 'chipotle-chicken-taco',
@@ -57,7 +57,7 @@ const MENU_DATA = [
         desc: 'Adobo grilled chicken breast, charred pineapple relish, queso fresco and fresh coriander sprigs.',
         bestseller: true,
         spicy: true,
-        img: 'https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?auto=format&fit=crop&w=600&q=80'
+        img: null
       }
     ]
   },
@@ -103,7 +103,7 @@ const MENU_DATA = [
         desc: 'Hand-mashed Hass avocados, roasted serrano chilies, Roma tomatoes, sea salt, lime & house warm corn chips.',
         bestseller: true,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1541288097308-7b8e3f58c4c6?auto=format&fit=crop&w=600&q=80'
+        img: null
       }
     ]
   },
@@ -139,7 +139,7 @@ const MENU_DATA = [
         desc: 'Slow-simmered smoky tomato chicken, roasted corn, scallions and double cheese blend with avocado dip.',
         bestseller: false,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=600&q=80'
+        img: null
       }
     ]
   },
@@ -155,7 +155,7 @@ const MENU_DATA = [
         desc: 'Crispy cinnamon-sugar dusted taco waffle shell filled with vanilla bean gelato, chocolate drizzle & toasted pistachios.',
         bestseller: true,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1624300629298-e9de39c13be5?auto=format&fit=crop&w=600&q=80'
+        img: null
       },
       {
         id: 'classic-churros',
@@ -165,7 +165,7 @@ const MENU_DATA = [
         desc: 'Golden crisp fluted Mexican dough sticks rolled in aromatic cinnamon sugar, served with Belgian chocolate & caramel dip.',
         bestseller: true,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80'
+        img: null
       },
       {
         id: 'tres-leches',
@@ -175,7 +175,7 @@ const MENU_DATA = [
         desc: 'Traditional sponge cake soaked in three decadent milks, topped with vanilla cloud cream & fresh berries.',
         bestseller: false,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80'
+        img: null
       }
     ]
   },
@@ -201,7 +201,7 @@ const MENU_DATA = [
         desc: 'Mexican iced hibiscus tea infused with fresh orange zest, cinnamon and organic cane syrup. Refreshingly tart.',
         bestseller: false,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=600&q=80'
+        img: null
       },
       {
         id: 'cold-brew-horchata',
@@ -211,7 +211,7 @@ const MENU_DATA = [
         desc: 'House-made rice and almond milk with Ceylon cinnamon, blended over 18-hour cold brew coffee on the rocks.',
         bestseller: true,
         spicy: false,
-        img: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80'
+        img: null
       }
     ]
   }
@@ -299,9 +299,10 @@ function setActiveCategoryTab(catId) {
 // Generate Dish Card HTML
 function dishCardHtml(item) {
   const currentQty = cart[item.id] ? cart[item.id].qty : 0;
+  const hasImg = !!item.img;
   
   return `
-    <div class="dish-card" id="card-${item.id}">
+    <div class="dish-card ${hasImg ? '' : 'no-img'}" id="card-${item.id}">
       <div class="dish-info">
         <div class="dish-badges">
           <span class="food-type-icon ${item.isVeg ? 'veg' : 'nonveg'}">
@@ -315,10 +316,12 @@ function dishCardHtml(item) {
         <p class="dish-desc">${item.desc}</p>
       </div>
 
-      <div class="dish-action-col">
+      <div class="dish-action-col ${hasImg ? '' : 'no-img'}">
+        ${hasImg ? `
         <div class="dish-img-box">
-          <img src="${item.img}" alt="${item.name}" class="dish-img" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=300';"/>
+          <img src="${item.img}" alt="${item.name}" class="dish-img" loading="lazy" onerror="this.onerror=null;this.parentElement.style.display='none';this.closest('.dish-action-col').classList.add('no-img');"/>
         </div>
+        ` : ''}
         <div class="btn-add-container" id="control-${item.id}">
           ${controlHtml(item.id, currentQty)}
         </div>
