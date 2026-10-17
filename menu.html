@@ -206,46 +206,49 @@
       </div>
     </header>
 
-    <!-- Search & Diet Filters (Scrolls Normally) -->
-    <div class="filter-controls-section">
-      <div class="filter-controls-bar">
-        <!-- Search Input -->
-        <div class="search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" id="search-input" class="search-input" placeholder="Search tacos, nachos, churros, sips..." autocomplete="off">
-        </div>
+    <!-- MAIN PAGE CONTENT LANDMARK -->
+    <main id="main-content">
+      <!-- Search & Diet Filters (Scrolls Normally) -->
+      <div class="filter-controls-section">
+        <div class="filter-controls-bar">
+          <!-- Search Input -->
+          <div class="search-box">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search-input" class="search-input" placeholder="Search tacos, nachos, churros, sips..." autocomplete="off">
+          </div>
 
-        <!-- Veg / Non-Veg Diet Filter Bar -->
-        <div class="diet-bar">
-          <button class="diet-pill active" data-diet="all">
-            <span>All Items</span>
-          </button>
-          <button class="diet-pill" data-diet="veg">
-            <span class="indicator-dot veg"></span>
-            <span>Veg Only</span>
-          </button>
-          <button class="diet-pill" data-diet="nonveg">
-            <span class="indicator-dot nonveg"></span>
-            <span>Non-Veg</span>
-          </button>
+          <!-- Veg / Non-Veg Diet Filter Bar -->
+          <div class="diet-bar">
+            <button class="diet-pill active" data-diet="all">
+              <span>All Items</span>
+            </button>
+            <button class="diet-pill" data-diet="veg">
+              <span class="indicator-dot veg"></span>
+              <span>Veg Only</span>
+            </button>
+            <button class="diet-pill" data-diet="nonveg">
+              <span class="indicator-dot nonveg"></span>
+              <span>Non-Veg</span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Sticky Navigation Tabs (Only category tabs are sticky) -->
-    <div class="sticky-filter-wrapper">
-      <!-- Horizontal Category Tabs -->
-      <div class="category-tabs" id="category-tabs">
-        <!-- Rendered by JavaScript -->
+      <!-- Sticky Navigation Tabs (Only category tabs are sticky) -->
+      <div class="sticky-filter-wrapper">
+        <!-- Horizontal Category Tabs -->
+        <div class="category-tabs" id="category-tabs">
+          <!-- Rendered by JavaScript -->
+        </div>
       </div>
-    </div>
 
-    <!-- Dynamic Menu Container -->
-    <main class="menu-container" id="menu-container">
-      <!-- Dishes dynamically populated by script.js -->
+      <!-- Dynamic Menu Container -->
+      <div class="menu-container" id="menu-container">
+        <!-- Dishes dynamically populated by script.js -->
+      </div>
     </main>
 
     <!-- Khan Market Local SEO & Info Card -->
