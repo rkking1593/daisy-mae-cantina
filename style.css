@@ -72,7 +72,7 @@ body {
   color: var(--text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 120px;
+  padding-bottom: 60px;
 }
 
 /* Full Width App Container */
@@ -1647,6 +1647,15 @@ textarea.form-input {
 
   .menu-container {
     padding: 16px 14px;
+  }
+
+  body {
+    padding-bottom: 50px;
+  }
+
+  .cantina-footer {
+    padding: 24px 14px 20px;
+    margin-top: 16px;
   }
 }
 
